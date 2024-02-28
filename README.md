@@ -1,3 +1,34 @@
+# Sudoku Solving Algorithms
+
+## Backtracking
+
+| Pros                | Cons                                         |
+| ------------------- | -------------------------------------------- |
+| Easy to implement   | Exhaustive[(?)](#is-backtracking-exhaustive) |
+| Is easlily scalable | Not that fast                                |
+
+### Is Backtracking exhaustive?
+
+Hmmm. Yes kind of... #TODO
+
+## Stochastic search
+
+A solving algorithms that randomly fills in the board, then checks for violations and then shuffling them.
+|Pros|Cons|
+|-|-|
+|Still easy to implement|Faster than exhaustive, but slower than deductive algorithms|
+|Fun | Random|
+
+#### Note
+
+After a sudoku is given there will always be a specific set a numbers. Meaning there is from the start a finite set of possible numbers that can be used.
+
+## Others
+
+- [Simplex Algortihm](https://en.wikipedia.org/wiki/Simplex_algorithm)
+  - Might requires some understanding of simplices (geometry and dimensions)
+  - Can indicate if a Sudoku is valid or not
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -17,12 +48,12 @@ If you are developing a production application, we recommend updating the config
 export default {
   // other rules...
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
+    ecmaVersion: "latest",
+    sourceType: "module",
+    project: ["./tsconfig.json", "./tsconfig.node.json"],
     tsconfigRootDir: __dirname,
   },
-}
+};
 ```
 
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
