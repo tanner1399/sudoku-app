@@ -38,7 +38,32 @@ td {
 }
 
 .buttonContainer {
-  margin-top: 50px;
+  margin-top: 10px;
+}
+
+.checkButton {
+  background-color: aquamarine;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: medium;
+}
+.solveButton {
+  background-color: rgb(47, 194, 61);
+  font-weight: bold;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: medium
+}
+.resetButton {
+  background-color: rgb(63, 153, 123);
+  font-weight: bold;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: medium
 }
 
 .bBorder {
