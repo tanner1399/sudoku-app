@@ -1,4 +1,4 @@
-.board {
+/* .board {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(9, 1fr);
@@ -29,4 +29,4 @@ td {
 
 .rBorder {
   border-right: 2px solid black;
-}
+} */

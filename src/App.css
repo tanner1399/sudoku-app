@@ -1,6 +1,8 @@
+.center-board {
+  text-align: center;
+}
 
 .Board-header {
-  text-align: center;
   background-color: rgb(242, 148, 247);
   min-height: 100vh;
   display: flex;
@@ -20,3 +22,29 @@
   border: 1px solid black;
 }
 
+.board-row {
+  display: flex;
+}
+
+table {
+  border-collapse: collapse;
+  border: 3px solid;
+  background-color: rgb(229, 180, 225);
+  margin: auto;
+}
+
+td {
+  padding: 0;
+}
+
+.buttonContainer {
+  margin-top: 50px;
+}
+
+.bBorder {
+  border-bottom: 2px solid black;
+}
+
+.rBorder {
+  border-right: 2px solid black;
+}

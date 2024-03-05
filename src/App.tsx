@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import Board from "./components/Board";
+//import Board from "./components/Board";
 
 const initialBoard = [
   [-1, 1, -1, 3, -1, -1, 8, -1, -1],
@@ -15,9 +15,8 @@ const initialBoard = [
 ];
 
 function App() {
-
   const [boardArray, setBoardArray] = useState(getDeepCopy(initialBoard));
-  
+
   function getDeepCopy(arr: number[][]) {
     return JSON.parse(JSON.stringify(arr));
   }
@@ -38,15 +37,46 @@ function App() {
     setBoardArray(grid);
   }
 
-return (
- 
-  <div className="Board-header">
-    <h2>Sudoku</h2>
-      <Board boardArray={boardArray} onInputChange={onInputChange} />
-  </div>
-
-);
+  return (
+    <div className="center-board">
+      <div className="Board-header">
+        <h2>Sudoku</h2>
+        <table>
+          {/* Mapping over rows and columns to generate Sudoku grid */}
+          <tbody>
+            {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((row, rowIndex) => {
+              return (
+                <tr
+                  key={rowIndex}
+                  className={(row + 1) % 3 === 0 ? "bBorder" : ""}
+                >
+                  {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((col, colIndex) => {
+                    return (
+                      <td
+                        key={rowIndex + colIndex}
+                        className={(col + 1) % 3 === 0 ? "rBorder" : ""}
+                      >
+                        <input
+                          onChange={(e) => onInputChange(e, row, col)}
+                          value={
+                            boardArray[row][col] === -1
+                              ? ""
+                              : boardArray[row][col]
+                          }
+                          className="cellInput"
+                          disabled={initialBoard[row][col] !== -1}
+                        />
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 }
-
 
 export default App;
