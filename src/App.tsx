@@ -61,7 +61,6 @@ function App() {
 
   // Function to check the Sudoku solution
   function checkSudoku() {
-    //TODO
     let sudoku = getDeepCopy(initialBoard);
     solver(sudoku);
 
@@ -71,7 +70,7 @@ function App() {
     if (compare.isComplete) {
       alert("Congrats! The sudoku is solved");
     } else if (compare.isSolvable) {
-      alert("Keep going!");
+      alert("You're getting closer! Keep going!");
     } else {
       alert("Wrong! Try again");
     }
@@ -150,12 +149,9 @@ function App() {
         // get Next cell and repeat function
         let [nextRow, nextCol] = getNext(row, col);
 
-        //TODO: merge these if statements into one
-        if (!nextRow && !nextCol) {
+
+        if ((!nextRow && !nextCol) || solver(grid, nextRow, nextCol)) {
           // If Sudoku is solved with this placement, return true
-          return true;
-        }
-        if (solver(grid, nextRow, nextCol)) {
           return true;
         }
       }
