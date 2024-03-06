@@ -81,16 +81,21 @@ function App() {
   // are used to implement Sudoku solving logic and validate moves
 
   // Checks if a given number can be legally placed in a specified row
-  function checkRow(grid: number[][], row, num) {
+  function checkRow(grid: number[][], row: number, num: number) {
     return grid[row].indexOf(num) === -1; // Returns true if the number is not already in the row
   }
 
   // Checks if a given number can be legally placed in a specified column
-  function checkCol(grid, col, num) {
+  function checkCol(grid: number[][], col: number, num: number) {
     return grid.map((row) => row[col]).indexOf(num) === -1; // Maps each row to its value in the column and checks if the number is not present
   }
 
-  function checkSquare(grid, row, col, num) {
+  function checkSquare(
+    grid: number[][],
+    row: number,
+    col: number,
+    num: number
+  ) {
     //get the indexes of the square
     let squareArray = [],
       rowStart = row - (row % 3), // Calculates the starting indexes
@@ -107,7 +112,7 @@ function App() {
   }
 
   //This function validates if a given move is legal by checking the row, column, and square constraints
-  function checkValid(grid, row, col, num) {
+  function checkValid(grid: number[][], row: number, col: number, num: number) {
     if (
       checkRow(grid, row, num) &&
       checkCol(grid, col, num) &&
@@ -118,7 +123,7 @@ function App() {
     return false;
   }
 
-  function getNext(row, col) {
+  function getNext(row: number, col: number) {
     //if col reaches 8, increase row
     //if row reaches 8 and col reaches 8, next index will be [0,0] indicating the end of the grid
     return col !== 8 ? [row, col + 1] : row != 8 ? [row + 1, 0] : [0, 0];
@@ -126,7 +131,7 @@ function App() {
 
   //function to solve the sudoki, using backtracking
   //TODO: implement waiting time
-  function solver(grid, row = 0, col = 0) {
+  function solver(grid: number[][], row = 0, col = 0) {
     if (grid[row][col] !== -1) {
       //If current cell already is filled, move to next cell
       let isLast = row >= 8 && col >= 8;
