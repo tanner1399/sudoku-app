@@ -160,8 +160,7 @@ function App() {
     grid[row][col] = -1;
     return false; // If no number is valid in the current cell, return false to trigger backtracking
   }
-  //TODO: make this to an if statement
-  //TODO: / If the solver successfully solves the puzzle,update the board state with the solution, make an alert to notify the user if the Sudoku is unsolvable
+
   function solveSudoku() {
     let sudoku = getDeepCopy(initialBoard);
     if (solver(sudoku)) {
