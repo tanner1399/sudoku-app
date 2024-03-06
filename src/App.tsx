@@ -149,7 +149,6 @@ function App() {
         // get Next cell and repeat function
         let [nextRow, nextCol] = getNext(row, col);
 
-
         if ((!nextRow && !nextCol) || solver(grid, nextRow, nextCol)) {
           // If Sudoku is solved with this placement, return true
           return true;
@@ -165,8 +164,11 @@ function App() {
   //TODO: / If the solver successfully solves the puzzle,update the board state with the solution, make an alert to notify the user if the Sudoku is unsolvable
   function solveSudoku() {
     let sudoku = getDeepCopy(initialBoard);
-    solver(sudoku);
-    setBoardArray(sudoku);
+    if (solver(sudoku)) {
+      setBoardArray(sudoku);
+    } else {
+      alert("No solutions exist!");
+    }
   }
 
   function resetSudoku() {
