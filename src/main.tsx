@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import Root from "./routes/root.tsx";
-import BoardRoute from "./routes/gameRoute.tsx";
+import Root from "./routes/home.tsx";
 import App from "./App.tsx";
+import ScaleBoard from "./components/scaleBoard.tsx";
 
 const router = createBrowserRouter([
   {
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
   },
   {
     path: "Game",
-    element: <BoardRoute />,
+    element: <ScaleBoard />,
   },
   {
     path: "Root",

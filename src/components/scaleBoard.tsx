@@ -47,45 +47,52 @@ class ScaleBoard extends Component {
     const { createdBoard } = this.state;
 
     return (
-      <div>
-        Scale me!
-        <form>
-          <input
-            onChange={this.handleChange}
-            type="number"
-            value={this.state.boardSize}
-          ></input>
-        </form>
-        <button onClick={this.createBoard}>Create</button>
-        {createdBoard && (
-          <table>
-            {/* Mapping over rows and columns to generate Sudoku grid */}
-            <tbody>
-              {createdBoard.map((row, rowIndex) => (
-                <tr
-                  key={rowIndex}
-                  className={(rowIndex + 1) % 3 === 0 ? "bBorder" : ""}
-                >
-                  {row.map((col, colIndex) => (
-                    <td
-                      key={colIndex}
-                      className={(colIndex + 1) % 3 === 0 ? "rBorder" : ""}
-                    >
-                      <input
-                        onChange={(e) =>
-                          this.handleCellChange(e, rowIndex, colIndex)
-                        }
-                        value={col === -1 ? "" : col}
-                        className="cellInput"
-                        disabled={col !== -1}
-                      />
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+      <div className="center-board">
+        <div className="Board-header">
+          Scale me!
+          <form>
+            <input
+              onChange={this.handleChange}
+              type="number"
+              value={this.state.boardSize}
+            ></input>
+          </form>
+          <button onClick={this.createBoard}>Create</button>
+          {createdBoard && (
+            <table>
+              {/* Mapping over rows and columns to generate Sudoku grid */}
+              <tbody>
+                {createdBoard.map((row, rowIndex) => (
+                  <tr
+                    key={rowIndex}
+                    className={(rowIndex + 1) % 3 === 0 ? "bBorder" : ""}
+                  >
+                    {row.map((col, colIndex) => (
+                      <td
+                        key={colIndex}
+                        className={(colIndex + 1) % 3 === 0 ? "rBorder" : ""}
+                      >
+                        <input
+                          onChange={(e) =>
+                            this.handleCellChange(e, rowIndex, colIndex)
+                          }
+                          value={col === -1 ? "" : col}
+                          className="cellInput"
+                          disabled={col !== -1}
+                        />
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+          <div className="buttonContainer">
+            <button className="checkButton">Check</button>
+            <button className="solveButton">Solve</button>
+            <button className="resetButton">Reset</button>
+          </div>
+        </div>
       </div>
     );
   }
