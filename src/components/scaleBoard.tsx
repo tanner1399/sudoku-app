@@ -1,5 +1,6 @@
 import { Component } from "react";
 import "./Board.css";
+import { generateSudokuBoard } from "./sudokuGenerator.tsx";
 
 class ScaleBoard extends Component {
   state = {
@@ -11,9 +12,10 @@ class ScaleBoard extends Component {
   createBoard = () => {
     const boardSize = parseInt(this.state.boardSize, 10);
     if (!isNaN(boardSize) && boardSize > 0) {
-      const newBoard = Array.from({ length: boardSize }, () =>
-        Array(boardSize).fill(-1)
-      );
+      //const newBoard = Array.from({ length: boardSize }, () =>
+            //   Array(boardSize).fill(-1)
+      // );
+      const newBoard = generateSudokuBoard();
       this.setState({
         inputBoard: newBoard,
         createdBoard: newBoard,
