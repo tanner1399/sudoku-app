@@ -129,16 +129,15 @@ body {
   }
 
   .greeting {
-    margin-top: 20px;
-    color: rgba(0, 0, 0, 0.75);
+    font-size: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+    position: fixed;
     top: 50%;
     left: 50%;
-  }
-  
-  .greeting p {
-    font-size: 20px;
-    color: rgba(0, 0, 0, 0.75);
-    top: 50%;
-    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: inherit;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   

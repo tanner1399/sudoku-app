@@ -14,8 +14,22 @@ export default function Root() {
   }
 
   function handleLogin() {
-    setShowModal(false);
-    setIsLoggedIn(true);
+    if (validateUsername(username)) {
+      setShowModal(false);
+      setIsLoggedIn(true);
+    }
+  }
+
+  function validateUsername(username: string) {
+    if (username.length > 20) {
+      alert("Username cannot be longer than 20 charecters");
+      return false;
+    } else if (/\s/.test(username)) {
+      alert("Username cannot contain blank spaces");
+      return false;
+    } else {
+      return true;
+    }
   }
 
   return (
@@ -34,9 +48,13 @@ export default function Root() {
       )}
       {isLoggedIn && (
         <div className="greeting">
-          <p>Hi {username}! Please select a difficulity</p>
+          <p>
+            Hi {username}!<br />
+            Please select a board size & difficulty
+          </p>
         </div>
       )}
+
       <div className="buttons-container">
         <div className="difficulty-buttons">
           <button className="easy-button">Easy</button>

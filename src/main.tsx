@@ -3,20 +3,15 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Root from "./routes/home.tsx";
-import App from "./App.tsx";
 import ScaleBoard from "./components/scaleBoard.tsx";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
   {
     path: "Game",
     element: <ScaleBoard />,
   },
   {
-    path: "Root",
+    path: "/",
     element: <Root />,
   },
 ]);

@@ -51,7 +51,7 @@ class ScaleBoard extends Component {
     return (
       <div className="center-board">
         <div className="Board-header">
-          Scale me!
+          Sudoku!
           <form>
             <input
               onChange={this.handleChange}
@@ -63,7 +63,7 @@ class ScaleBoard extends Component {
           {createdBoard && (
             <table>
               {/* Mapping over rows and columns to generate Sudoku grid */}
-              <tbody>
+              <tbody className="board-container">
                 {createdBoard.map((row, rowIndex) => (
                   <tr
                     key={rowIndex}
