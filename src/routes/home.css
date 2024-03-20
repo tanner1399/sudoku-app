@@ -1,12 +1,12 @@
 .Title {
-    padding-bottom: 500px;
-    font-size: 100px;
+    padding-bottom: 10%; /* Instead of 500px */
+    font-size: 10vw; /* Using viewport width */
     color: rgba(0, 0, 0, 0.75);
 }
 
 body {
     margin: 0;
-    overflow: hidden;
+    padding: 0;
 }
 
 .menu-container {
@@ -15,33 +15,79 @@ body {
     width: 100%;
     height: 100vh;
     align-items: center;
-    justify-content: center;
     background: linear-gradient(320deg, rgb(199, 231, 255),rgb(199, 231, 255),rgb(255, 255, 255));
+    justify-content: space-between; /* Adjusted to space-between */
+    position: relative; /* Added for absolute positioning */
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: inherit;
+    padding: 5%; /* Adjust as needed */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .buttons-container {
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    bottom: 10px; /* Adjust as needed */
+    width: 100%; /* Adjusted to full width */
 }
 
 .difficulty-buttons {
     display: flex;
     justify-content: space-around;
-    height: 40px;
-    width: 309px;
+    width: 310px; /* Adjust as needed */
+    padding-bottom: 5px;
 }
 
-.easy-button, .medium-button, .hard-button {
-    height: 30px;
-    width: 100px;
+.easy-button, .medium-button, .hard-button, .start-button {
+    height: 30px; /* Adjust as needed */
+    width: 100px; /* Adjust as needed */
     border-radius: 2px;
     border-width: 1px;
     color: rgba(0, 0, 0, 0.75);
     opacity: 0.9;
     font-size: large;
-    font-weight:bold;
+    font-weight: bold;
+}
+
+.modal input {
+    width: 100%;
+    margin-bottom: 10px; /* Adjust as needed */
+    background-color: rgb(183, 215, 239);
+    border-width: 0px;
+    color: rgba(0, 0, 0, 0.75);
+    font-weight: bold;
+}
+
+.modal button {
+    background-color: rgb(135, 135, 224);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.greeting {
+    font-size: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: inherit;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .easy-button {
@@ -92,52 +138,3 @@ body {
     border-color: rgb(0, 123, 217);
     background-color:rgb(0, 123, 217);
 }
-
-.modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: inherit;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .modal input {
-    width: 100%;
-    margin-bottom: 10px;
-    background-color:rgb(183, 215, 239);
-    border-width: 0px;
-    color: rgba(0, 0, 0, 0.75);
-    font-weight: bold;
-    
-  }
-  
-  .modal button {
-    background-color: rgb(135, 135, 224);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .modal button:hover {
-    background-color:  rgb(115, 115, 192);
-  }
-
-  .greeting {
-    font-size: 25px;
-    padding-left: 50px;
-    padding-right: 50px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: inherit;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
