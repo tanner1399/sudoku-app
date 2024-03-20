@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./home.css";
-
 import { useNavigate } from "react-router-dom";
+import ScaleBoard from "../components/scaleBoard";
 
 export default function Root() {
   useEffect(() => {
@@ -11,9 +11,17 @@ export default function Root() {
   const [username, setUsername] = useState("");
   const [showModal, setShowModal] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [boardSize, setBoardSize] = useState("");
+  const [boardCreated, setBoardCreated] = useState(false);
 
   function handleClick() {
-    navigate("/Game");
+    const size = parseInt(boardSize, 10);
+    if (!isNaN(size) && size > 0) {
+      setBoardCreated(true);
+      navigate("/Game", { state: { boardSize } });
+    } else {
+      alert("Please select a valid board size before starting the game");
+    }
   }
 
   function handleLogin() {
@@ -22,6 +30,11 @@ export default function Root() {
       setIsLoggedIn(true);
     }
   }
+
+  const handleBoardSize = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const size = e.target.value;
+    setBoardSize(size);
+  };
 
   function validateUsername(username: string) {
     if (username.length > 20) {
@@ -57,7 +70,15 @@ export default function Root() {
           </p>
         </div>
       )}
-
+      <form>
+        <input
+          type="number"
+          value={boardSize}
+          placeholder="Enter board size"
+          onChange={handleBoardSize}
+        ></input>
+      </form>
+      {boardCreated && <ScaleBoard boardSize={boardSize} />}
       <div className="buttons-container">
         <div className="difficulty-buttons">
           <button className="easy-button">Easy</button>
