@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./home.css";
 
 import { useNavigate } from "react-router-dom";
 
 export default function Root() {
+  useEffect(() => {
+    document.title = 'SouDouKou'; // Set title of page
+  }, []);
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [showModal, setShowModal] = useState(true);
