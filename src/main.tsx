@@ -9,7 +9,7 @@ import ScaleBoard from "./components/scaleBoard.tsx";
 const router = createBrowserRouter([
   {
     path: "Game",
-    element: <ScaleBoard boardSize="" />,
+    element: <ScaleBoard />,
   },
   {
     path: "/",

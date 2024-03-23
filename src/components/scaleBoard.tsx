@@ -2,26 +2,22 @@ import "./Board.css";
 
 import React, { useState, useEffect } from "react";
 
-interface ScaleBoardProps {
-  boardSize: string;
-}
-
-function ScaleBoard({ boardSize }: ScaleBoardProps) {
-  const [inputBoard, setInputBoard] = useState<number[][]>([]);
+function ScaleBoard() {
   const [createdBoard, setCreatedBoard] = useState<number[][]>([]);
 
   const createBoard = (size: number) => {
     const newBoard = Array.from({ length: size }, () => Array(size).fill(-1));
-    setInputBoard(newBoard);
     setCreatedBoard(newBoard);
   };
 
   useEffect(() => {
-    const size = parseInt(boardSize, 10);
-    if (!isNaN(size) && size > 0) {
-      createBoard(size);
+    const boardSize = parseInt(localStorage.getItem("boardSize")!, 10);
+    if (!isNaN(boardSize) && boardSize > 0) {
+      createBoard(boardSize);
+    } else {
+      alert("Invalid boardSize, go back to homescreen!");
     }
-  }, [boardSize]);
+  }, []);
 
   const handleCellChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -37,7 +33,7 @@ function ScaleBoard({ boardSize }: ScaleBoardProps) {
     <div className="center-board">
       <div className="Board-header">
         Sudoku!
-        {createdBoard.length > 0 && (
+        {createdBoard && (
           <table>
             {/* Mapping over rows and columns to generate Sudoku grid */}
             <tbody className="board-container">
