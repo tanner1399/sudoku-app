@@ -25,7 +25,7 @@ function isValid(
     if (board[x][col] === num) return false;
   }
 
-  // 3x3 subgrid check
+  // Subgrid check
   const subGridSize = Math.floor(Math.sqrt(boardSize));
   const startRow = Math.floor(row / subGridSize) * subGridSize;
   const startCol = Math.floor(col / subGridSize) * subGridSize;
@@ -43,7 +43,7 @@ function fillBoard(board: number[][]): boolean {
   for (let row = 0; row < getBoardSize(); row++) {
     for (let col = 0; col < getBoardSize(); col++) {
       if (board[row][col] === -1) {
-        const numbers = shuffleArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+        const numbers = shuffleArray(boardSizeToArray(getBoardSize()));
         console.log(numbers);
         console.log(board);
         for (let num of numbers) {
@@ -82,17 +82,17 @@ function removeNumbers(board: number[][], holes: number): number[][] {
   return board;
 }
 
-// // Converts the boardSize to an array of boardSize length
-// function boardSizeToArray(size: number): number[] {
-//   const arr = [];
-//   for (let i = 1; i <= size; i++) {
-//     arr.push(i);
-//   }
-//   return arr;
-// }
+// Converts the boardSize to an array of boardSize length
+function boardSizeToArray(size: number): number[] {
+  const arr = [];
+  for (let i = 1; i <= size; i++) {
+    arr.push(i);
+  }
+  return arr;
+}
 
 // Gets the inputted boardSize
-function getBoardSize(): number {
+export function getBoardSize(): number {
   return parseInt(localStorage.getItem("boardSize")!, 10);
 }
 

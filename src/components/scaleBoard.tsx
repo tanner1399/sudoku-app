@@ -1,9 +1,10 @@
 import "./Board.css";
-import { generateSudokuBoard } from "./sudokuGenerator";
+import { generateSudokuBoard, getBoardSize } from "./sudokuGenerator";
 import React, { useState, useEffect } from "react";
 
 function ScaleBoard() {
   const [createdBoard, setCreatedBoard] = useState<number[][]>([]);
+  const boardSize = getBoardSize();
 
   const createBoard = (size: number) => {
     const newBoard = generateSudokuBoard();
@@ -12,7 +13,7 @@ function ScaleBoard() {
 
   useEffect(() => {
     const boardSize = parseInt(localStorage.getItem("boardSize")!, 10);
-    if (!isNaN(boardSize) && boardSize > 0) {
+    if (!isNaN(boardSize) && boardSize > 0 && Math.sqrt(boardSize) % 1 === 0) {
       createBoard(boardSize);
     } else {
       alert("Invalid boardSize, go back to homescreen!");
@@ -40,12 +41,20 @@ function ScaleBoard() {
               {createdBoard.map((row, rowIndex) => (
                 <tr
                   key={rowIndex}
-                  className={(rowIndex + 1) % 3 === 0 ? "bBorder" : ""}
+                  className={
+                    (rowIndex + 1) % Math.sqrt(getBoardSize()) === 0
+                      ? "bBorder"
+                      : ""
+                  }
                 >
                   {row.map((col, colIndex) => (
                     <td
                       key={colIndex}
-                      className={(colIndex + 1) % 3 === 0 ? "rBorder" : ""}
+                      className={
+                        (colIndex + 1) % Math.sqrt(getBoardSize()) === 0
+                          ? "rBorder"
+                          : ""
+                      }
                     >
                       <input
                         onChange={(e) =>
