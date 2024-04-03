@@ -67,6 +67,15 @@ body {
     font-weight: bold;
 }
 
+.board-size-input {
+    width: 100%;
+    margin-bottom: 10px; /* Adjust as needed */
+    background-color: rgb(183, 215, 239);
+    border-width: 0px;
+    color: rgba(0, 0, 0, 0.75);
+    font-weight: bold;
+}
+
 .modal button {
     background-color: rgb(135, 135, 224);
     color: white;

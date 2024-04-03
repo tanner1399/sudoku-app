@@ -4,20 +4,17 @@ import { useNavigate } from "react-router-dom";
 
 export default function Root() {
   useEffect(() => {
-    document.title = "SouDouKou"; // Set title of page
+    document.title = "SuDoKu"; // Set title of page
   }, []);
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [showModal, setShowModal] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [EasyClicked, setEasyClicked] = useState(false);
-  const [MedClicked, setMedClicked] = useState(false);
-  const [hardClicked, setHardClicked] = useState(false);
   const [boardSize, setBoardSize] = useState("");
 
   function handleClick() {
     const size = parseInt(boardSize, 10);
-    if (!isNaN(size) && size > 0) {
+    if (!isNaN(size) && size > 0 && Math.sqrt(size) % 1 === 0) {
       localStorage.setItem("boardSize", boardSize);
       navigate("/Game");
     } else {
@@ -32,21 +29,15 @@ export default function Root() {
     }
   }
   function handleEasyClick() {
-    setEasyClicked(true);
-    setMedClicked(false);
-    setHardClicked(false);
+    localStorage.setItem("difficulty", "Easy");
   }
 
   function handleMedClick() {
-    setEasyClicked(false);
-    setMedClicked(true);
-    setHardClicked(false);
+    localStorage.setItem("difficulty", "Medium");
   }
 
   function handleHardClick() {
-    setEasyClicked(false);
-    setMedClicked(false);
-    setHardClicked(true);
+    localStorage.setItem("difficulty", "Hard");
   }
 
   const handleBoardSize = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -91,6 +82,7 @@ export default function Root() {
           </p>
           <form>
             <input
+              className="board-size-input"
               type="number"
               value={boardSize}
               placeholder="Enter board size"
