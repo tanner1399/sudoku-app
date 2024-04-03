@@ -44,8 +44,6 @@ function fillBoard(board: number[][]): boolean {
     for (let col = 0; col < getBoardSize(); col++) {
       if (board[row][col] === -1) {
         const numbers = shuffleArray(boardSizeToArray(getBoardSize()));
-        console.log(numbers);
-        console.log(board);
         for (let num of numbers) {
           if (isValid(board, row, col, num)) {
             board[row][col] = num;
@@ -68,12 +66,10 @@ function removeNumbers(board: number[][], holes: number): number[][] {
   let attempts = holes;
 
   while (attempts > 0) {
-    console.log(attempts);
     let row = Math.floor(Math.random() * getBoardSize());
     let col = Math.floor(Math.random() * getBoardSize());
 
     if (board[row][col] != -1) {
-      console.log("if board ja?");
       board[row][col] = -1;
       attempts--;
     }

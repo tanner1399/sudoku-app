@@ -42,16 +42,14 @@ function ScaleBoard() {
                 <tr
                   key={rowIndex}
                   className={
-                    (rowIndex + 1) % Math.sqrt(getBoardSize()) === 0
-                      ? "bBorder"
-                      : ""
+                    (rowIndex + 1) % Math.sqrt(boardSize) === 0 ? "bBorder" : ""
                   }
                 >
                   {row.map((col, colIndex) => (
                     <td
                       key={colIndex}
                       className={
-                        (colIndex + 1) % Math.sqrt(getBoardSize()) === 0
+                        (colIndex + 1) % Math.sqrt(boardSize) === 0
                           ? "rBorder"
                           : ""
                       }
