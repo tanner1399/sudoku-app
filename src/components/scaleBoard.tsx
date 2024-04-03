@@ -6,7 +6,7 @@ function ScaleBoard() {
   const [createdBoard, setCreatedBoard] = useState<number[][]>([]);
   const boardSize = getBoardSize();
 
-  const createBoard = (size: number) => {
+  const createBoard = () => {
     const newBoard = generateSudokuBoard();
     setCreatedBoard(newBoard);
   };
@@ -14,7 +14,7 @@ function ScaleBoard() {
   useEffect(() => {
     const boardSize = parseInt(localStorage.getItem("boardSize")!, 10);
     if (!isNaN(boardSize) && boardSize > 0 && Math.sqrt(boardSize) % 1 === 0) {
-      createBoard(boardSize);
+      createBoard();
     } else {
       alert("Invalid boardSize, go back to homescreen!");
     }
