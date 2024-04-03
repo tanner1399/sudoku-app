@@ -4,7 +4,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Root from "./routes/home.tsx";
 import ScaleBoard from "./components/scaleBoard.tsx";
-// import boardSize from "./components/scaleBoard.tsx";
 
 const router = createBrowserRouter([
   {

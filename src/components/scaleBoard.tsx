@@ -1,12 +1,12 @@
 import "./Board.css";
-
+import { generateSudokuBoard } from "./sudokuGenerator";
 import React, { useState, useEffect } from "react";
 
 function ScaleBoard() {
   const [createdBoard, setCreatedBoard] = useState<number[][]>([]);
 
   const createBoard = (size: number) => {
-    const newBoard = Array.from({ length: size }, () => Array(size).fill(-1));
+    const newBoard = generateSudokuBoard();
     setCreatedBoard(newBoard);
   };
 

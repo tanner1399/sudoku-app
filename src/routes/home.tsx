@@ -36,7 +36,10 @@ export default function Root() {
 
   function validateUsername(username: string) {
     if (username.length > 20) {
-      alert("Username cannot be longer than 20 charecters");
+      alert("Username cannot be longer than 20 charecters or empty");
+      return false;
+    } else if (username.length == 0) {
+      alert("Username cannot be empty!");
       return false;
     } else if (/\s/.test(username)) {
       alert("Username cannot contain blank spaces");
