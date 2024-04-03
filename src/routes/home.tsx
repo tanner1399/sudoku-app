@@ -5,12 +5,15 @@ import { useNavigate } from "react-router-dom";
 
 export default function Root() {
   useEffect(() => {
-    document.title = 'SouDouKou'; // Set title of page
+    document.title = "SouDouKou"; // Set title of page
   }, []);
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [showModal, setShowModal] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [EasyClicked, setEasyClicked] = useState(false);
+  const [MedClicked, setMedClicked] = useState(false);
+  const [hardClicked, setHardClicked] = useState(false);
 
   function handleClick() {
     navigate("/Game");
@@ -21,6 +24,24 @@ export default function Root() {
       setShowModal(false);
       setIsLoggedIn(true);
     }
+  }
+
+  function handleEasyClick() {
+    setEasyClicked(true);
+    setMedClicked(false);
+    setHardClicked(false);
+  }
+
+  function handleMedClick() {
+    setEasyClicked(false);
+    setMedClicked(true);
+    setHardClicked(false);
+  }
+
+  function handleHardClick() {
+    setEasyClicked(false);
+    setMedClicked(false);
+    setHardClicked(true);
   }
 
   function validateUsername(username: string) {
@@ -60,9 +81,15 @@ export default function Root() {
 
       <div className="buttons-container">
         <div className="difficulty-buttons">
-          <button className="easy-button">Easy</button>
-          <button className="medium-button">Medium</button>
-          <button className="hard-button">Hard</button>
+          <button onClick={handleEasyClick} className="easy-button">
+            Easy
+          </button>
+          <button onClick={handleMedClick} className="medium-button">
+            Medium
+          </button>
+          <button onClick={handleHardClick} className="hard-button">
+            Hard
+          </button>
         </div>
         <button className="start-button" type="button" onClick={handleClick}>
           Start Game
