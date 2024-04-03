@@ -1,103 +1,82 @@
-import { Component } from "react";
 import "./Board.css";
-import { generateSudokuBoard } from "./sudokuGenerator.tsx";
+import { generateSudokuBoard, getBoardSize } from "./sudokuGenerator";
+import React, { useState, useEffect } from "react";
 
-class ScaleBoard extends Component {
-  state = {
-    boardSize: "",
-    inputBoard: [] as number[][],
-    createdBoard: [] as number[][],
+function ScaleBoard() {
+  const [createdBoard, setCreatedBoard] = useState<number[][]>([]);
+  const boardSize = getBoardSize();
+
+  const createBoard = (size: number) => {
+    const newBoard = generateSudokuBoard();
+    setCreatedBoard(newBoard);
   };
 
-  createBoard = () => {
-    const boardSize = parseInt(this.state.boardSize, 10);
-    if (!isNaN(boardSize) && boardSize > 0) {
-      //const newBoard = Array.from({ length: boardSize }, () =>
-            //   Array(boardSize).fill(-1)
-      // );
-      const newBoard = generateSudokuBoard();
-      this.setState({
-        inputBoard: newBoard,
-        createdBoard: newBoard,
-      });
+  useEffect(() => {
+    const boardSize = parseInt(localStorage.getItem("boardSize")!, 10);
+    if (!isNaN(boardSize) && boardSize > 0 && Math.sqrt(boardSize) % 1 === 0) {
+      createBoard(boardSize);
     } else {
-      alert("Invalid board size! Try again");
+      alert("Invalid boardSize, go back to homescreen!");
     }
-  };
+  }, []);
 
-  handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({
-      boardSize: event.target.value,
-    });
-  };
-
-  handleCellChange = (
+  const handleCellChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     row: number,
     col: number
   ) => {
-    const { createdBoard } = this.state;
     const newBoard = [...createdBoard];
     newBoard[row][col] = parseInt(event.target.value, 10) || -1;
-
-    this.setState({
-      createdBoard: newBoard,
-    });
+    setCreatedBoard(newBoard);
   };
 
-  render() {
-    const { createdBoard } = this.state;
-
-    return (
-      <div className="center-board">
-        <div className="Board-header">
-          Sudoku!
-          <form>
-            <input
-              onChange={this.handleChange}
-              type="number"
-              value={this.state.boardSize}
-            ></input>
-          </form>
-          <button onClick={this.createBoard}>Create</button>
-          {createdBoard && (
-            <table>
-              {/* Mapping over rows and columns to generate Sudoku grid */}
-              <tbody className="board-container">
-                {createdBoard.map((row, rowIndex) => (
-                  <tr
-                    key={rowIndex}
-                    className={(rowIndex + 1) % 3 === 0 ? "bBorder" : ""}
-                  >
-                    {row.map((col, colIndex) => (
-                      <td
-                        key={colIndex}
-                        className={(colIndex + 1) % 3 === 0 ? "rBorder" : ""}
-                      >
-                        <input
-                          onChange={(e) =>
-                            this.handleCellChange(e, rowIndex, colIndex)
-                          }
-                          value={col === -1 ? "" : col}
-                          className="cellInput"
-                          disabled={col !== -1}
-                        />
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-          <div className="buttonContainer">
-            <button className="checkButton">Check</button>
-            <button className="solveButton">Solve</button>
-            <button className="resetButton">Reset</button>
-          </div>
+  return (
+    <div className="center-board">
+      <div className="Board-header">
+        Sudoku!
+        {createdBoard && (
+          <table>
+            {/* Mapping over rows and columns to generate Sudoku grid */}
+            <tbody className="board-container">
+              {createdBoard.map((row, rowIndex) => (
+                <tr
+                  key={rowIndex}
+                  className={
+                    (rowIndex + 1) % Math.sqrt(boardSize) === 0 ? "bBorder" : ""
+                  }
+                >
+                  {row.map((col, colIndex) => (
+                    <td
+                      key={colIndex}
+                      className={
+                        (colIndex + 1) % Math.sqrt(boardSize) === 0
+                          ? "rBorder"
+                          : ""
+                      }
+                    >
+                      <input
+                        onChange={(e) =>
+                          handleCellChange(e, rowIndex, colIndex)
+                        }
+                        value={col === -1 ? "" : col}
+                        className="cellInput"
+                        disabled={col !== -1}
+                      />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        <div className="buttonContainer">
+          <button className="checkButton">Check</button>
+          <button className="solveButton">Solve</button>
+          <button className="resetButton">Reset</button>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default ScaleBoard;
