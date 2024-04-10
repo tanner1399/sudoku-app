@@ -6,6 +6,8 @@ import {
   generateFullSudokuBoard,
 } from "./sudokuGenerator";
 import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 function ScaleBoard() {
   const navigate = useNavigate();
@@ -111,6 +113,7 @@ function ScaleBoard() {
         )}
         <div className="mistakeCounter">
           Your remaining lives: {lifeCounter}
+          <FontAwesomeIcon icon={faHeart} />
         </div>
         <div className="buttonContainer">
           <button className="checkButton">Check</button>
