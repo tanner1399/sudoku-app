@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import "./Board.css";
 import {
   generateSudokuBoard,
@@ -7,6 +8,7 @@ import {
 import React, { useState, useEffect } from "react";
 
 function ScaleBoard() {
+  const navigate = useNavigate();
   const [createdBoard, setCreatedBoard] = useState<number[][]>([]);
   const [originalBoard, setOriginalBoard] = useState<number[][]>([]);
   const boardSize = getBoardSize();
@@ -54,6 +56,7 @@ function ScaleBoard() {
   const checkLifeCounter = () => {
     if (lifeCounter === 1) {
       alert("Game over! You have run out of lives.");
+      navigate("/");
     }
   };
 
