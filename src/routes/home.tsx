@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Root() {
   useEffect(() => {
-    document.title = "SuDoKu"; // Set title of page
+    document.title = "Sudoku"; // Set title of page
   }, []);
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
