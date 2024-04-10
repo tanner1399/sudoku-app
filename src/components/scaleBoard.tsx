@@ -95,7 +95,12 @@ function ScaleBoard() {
                             ? "correct"
                             : "incorrect"
                         }`}
-                        // disabled={col !== -1}
+                        disabled={
+                          createdBoard[rowIndex][colIndex] ===
+                          originalBoard[rowIndex][colIndex]
+                            ? true
+                            : false
+                        }
                       />
                     </td>
                   ))}
