@@ -1,0 +1,2 @@
+[{"difficulty":"Easy","boardSize":4,"time":0.5}]
+[{"difficulty":"Easy","boardSize":4,"time":0.19999980926513672}]

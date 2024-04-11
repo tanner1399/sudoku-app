@@ -1,3 +1,5 @@
+//import { jsonToCSV, triggerDownload } from './dataExporter';
+
 // Function to shuffle the array
 function shuffleArray(array: number[]): number[] {
   for (let i = array.length - 1; i > 0; i--) {
@@ -116,7 +118,31 @@ export function generateSudokuBoard(): number[][] {
   let board = Array.from({ length: getBoardSize() }, () =>
     Array(getBoardSize()).fill(-1)
   );
+
+  // Array to store runtime results
+  const generationTimes = [];
+  // Start measuring time
+  const startTime = performance.now();
+
   fillBoard(board);
+
+  // Stop measuring time
+  const endTime = performance.now();
+
+  // Store the result
+  generationTimes.push({
+    difficulty: getDifficulty(),
+    boardSize: getBoardSize(),
+    time: endTime - startTime,
+  });
+
+  // Calculate and log the generation time
+  //console.log(`Board generation time: ${endTime - startTime} milliseconds`);
+
+  //const csvData = jsonToCSV(generationTimes);
+  //triggerDownload(csvData, 'sudoku-generation-times.csv');
+  // After running the tests > Export data
+  console.log(JSON.stringify(generationTimes));
   removeNumbers(board, blanks); // Remove numbers to create a puzzle
   return board;
 }
