@@ -43,6 +43,18 @@
     margin-top: 10px;
   }
 
+  .mistakeCounter {
+    margin-bottom: 30px;
+  }
+
+  .incorrect{
+    color: red;
+  }
+
+  .correct{
+    color: black;
+  }
+
   .checkButton {
     background-color: aquamarine;
     font-weight: bold;
