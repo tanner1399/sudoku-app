@@ -64,7 +64,7 @@ function fillBoard(board: number[][]): boolean {
 }
 
 // Function to epty a given numbers of cell
-export function removeNumbers(board: number[][], blanks: number): number[][] {
+function removeNumbers(board: number[][], blanks: number): number[][] {
   let attempts = blanks;
 
   while (attempts > 0) {
@@ -99,18 +99,10 @@ function getDifficulty(): string {
   return localStorage.getItem("difficulty")!;
 }
 
-// Exported function to generate a new Sudoku board without removing any numbers
-export function generateFullSudokuBoard(): number[][] {
-  let board = Array.from({ length: getBoardSize() }, () =>
-    Array(getBoardSize()).fill(-1)
-  );
-  fillBoard(board);
-  return board;
-}
-
 // Exported function to generate a new Sudoku board and make it playable by removing numbers
-export function generateSudokuBoard(fullBoard: number[][]): number[][] {
+export function generateSudokuBoard(): number[][] {
   let blanks = 0;
+  console.log(getDifficulty());
   switch (getDifficulty()) {
     case "Easy":
       blanks = Math.floor(getBoardSize() * getBoardSize() * 0.4);
@@ -126,6 +118,12 @@ export function generateSudokuBoard(fullBoard: number[][]): number[][] {
   let board = Array.from({ length: getBoardSize() }, () =>
     Array(getBoardSize()).fill(-1)
   );
+
+  // Array to store runtime results
+  const generationTimes = [];
+  // Start measuring time
+  const startTime = performance.now();
+
   fillBoard(board);
 
   // Stop measuring time
