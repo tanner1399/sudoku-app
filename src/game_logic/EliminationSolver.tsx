@@ -10,7 +10,7 @@ type givenBoard = number[][];
 const boardSize = 9;
 const emptyCell = -1;
 
-function solveSudoku(board: givenBoard): givenBoard | null {
+function eliminateSudoku(board: givenBoard): givenBoard | null {
     // Make a copy of the board (Found online. Reformat later when input is proberly formatted.)
     const solvedBoard = JSON.parse(JSON.stringify(board));
 
