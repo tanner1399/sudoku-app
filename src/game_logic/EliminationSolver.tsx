@@ -33,11 +33,21 @@ function solveSudoku(board: givenBoard): givenBoard | null {
                 }
             }
         }
-        
         // Returns true when the given number (num) is allowed to be placed in the coordinates [row][col]
         return true;
-
     }
 
-    return null;
+    const solve = () => {
+        return false // TODO - make the actual solver
+    }
+
+    // Returns the solved board if it can be solved. Otherwise return null
+    // TODO if null is returned to the other files make it handle it with an error or something. 
+    if (solve()){
+        return solvedBoard;
+    } else {
+        return null; 
+    }
+
+    return null; // Delete when code is done (Maybe?)
 }
