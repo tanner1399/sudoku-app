@@ -1,4 +1,20 @@
+# Sudoku Generation
+
+Might be worth to look into this: [Minimum numbers given for a sudoku](https://en.wikipedia.org/wiki/Mathematics_of_Sudoku#Minimum_number_of_givens)
+They mention some kind of standard generator called "Unbiased Statistics of a CSP – A Controlled-Bias Generator".
+
+### Note
+
+> **Mathematical context**
+> The general problem of solving Sudoku puzzles on $n^2\times n^2$ grids of n×n blocks is known to be NP-complete.
+
+_lol..._
+
 # Sudoku Solving Algorithms
+
+## Constraint Propagation (currently implementing)
+
+Also known as the elimination method. Iteratively applying Sudoku constraints to eliminate possible values for each empty cell based on the values in its row, column, and box.
 
 ## Backtracking
 
