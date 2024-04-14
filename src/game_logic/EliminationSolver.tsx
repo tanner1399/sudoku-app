@@ -37,7 +37,25 @@ function solveSudoku(board: givenBoard): givenBoard | null {
         return true;
     }
 
+    // TODO: Make this less nested ~_~
     const solve = () => {
+        for (let row = 0; row < boardSize; row++) {
+            for (let col = 0; col < boardSize; col++) {
+                for (let num = 1; num <= boardSize; num++) {
+                    if (isValidPlacement(row, col, num)) {
+                        solvedBoard[row][col] = num;
+
+                        // Checks if this number leads to a solution
+                        if (solve()) {
+                            return board
+                        } else {
+                            solvedBoard[row][col] = emptyCell; // If no solution is found, set the cell as empty and move on
+                        }
+                    }
+
+                }
+            }
+        }
         return false // TODO - make the actual solver
     }
 
