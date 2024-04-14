@@ -48,6 +48,4 @@ function solveSudoku(board: givenBoard): givenBoard | null {
     } else {
         return null; 
     }
-
-    return null; // Delete when code is done (Maybe?)
 }
