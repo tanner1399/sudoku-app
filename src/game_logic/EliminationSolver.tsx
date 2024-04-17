@@ -5,12 +5,16 @@ TODOS:
     - Actual solver that checks isValidPlacement for all cells and returns the solved 2D array
  */
 
+import { getBoardSize } from "../components/sudokuGenerator";
+
 // Temp values:
 type boardType = number[][];
-const boardSize = 9;
-const emptyCell = -1;
 
-function eliminateSudoku(board: boardType): boardType | null {
+export function eliminateSudoku(board: boardType): boardType | null {
+    const boardSize = getBoardSize();
+    const boxSize = Math.sqrt(boardSize);
+    const emptyCell = -1;
+
     // Make a copy of the board (Found online. Reformat later when input is proberly formatted.)
     const solvedBoard = JSON.parse(JSON.stringify(board));
 
@@ -24,10 +28,10 @@ function eliminateSudoku(board: boardType): boardType | null {
 
         // Checks the same in the 3*3 box
             // TODO: Reformat to fit different sizes
-        const startRow = Math.floor(row / 3) * 3;
-        const startCol = Math.floor(col/3) * 3; 
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
+        const startRow = Math.floor(row / boxSize) * boxSize;
+        const startCol = Math.floor(col/boxSize) * boxSize; 
+        for (let i = 0; i < boxSize; i++) {
+            for (let j = 0; j < boxSize; j++) {
                 if (solvedBoard[startRow + i][startCol + j] === num){
                     return false;
                 }
