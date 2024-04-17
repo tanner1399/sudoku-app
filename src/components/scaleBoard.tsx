@@ -9,6 +9,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import Timer from "./timer";
+import { eliminateSudoku } from "../game_logic/EliminationSolver";
 
 function ScaleBoard() {
   const navigate = useNavigate();
@@ -29,6 +30,10 @@ function ScaleBoard() {
     const editedBoard = generateSudokuBoard(fullBoard);
     setCreatedBoard(editedBoard);
     setResetBoard([...editedBoard]);
+  };
+
+  const solveSudoku = () => {
+    setCreatedBoard(eliminateSudoku(createdBoard)!);
   };
 
   useEffect(() => {
@@ -178,7 +183,7 @@ function ScaleBoard() {
             Your remaining lives: {lifeCounter}
             <FontAwesomeIcon icon={faHeart} />
           </div>
-          <button className="solveButton">Solve</button>
+          <button onClick={solveSudoku} className="solveButton">Solve</button>
         </div>
         {isFinished && (
           <div className="finishedBox">
