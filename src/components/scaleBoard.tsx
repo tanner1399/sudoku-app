@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import "./Board.css";
 import {
   generateSudokuBoard,
@@ -8,6 +8,7 @@ import {
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import Timer from "./timer";
 
 function ScaleBoard() {
   const navigate = useNavigate();
@@ -15,6 +16,8 @@ function ScaleBoard() {
   const [originalBoard, setOriginalBoard] = useState<number[][]>([]);
   const boardSize = getBoardSize();
   const [lifeCounter, setLifeCounter] = useState<number>(3);
+  const [elapsedTime, setElapsedTime] = useState<number>(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const createBoards = () => {
     const fullBoard = generateFullSudokuBoard();
@@ -31,6 +34,20 @@ function ScaleBoard() {
       alert("Invalid boardSize, go back to homescreen!");
     }
   }, []);
+
+  useEffect(() => {
+    let intervalId: number | null = null;
+
+    if (!isPaused) {
+      intervalId = setInterval(() => {
+        setElapsedTime((prevElapsedTime) => prevElapsedTime + 1);
+      }, 1000);
+    }
+
+    return () => {
+      if (intervalId) clearInterval(intervalId); // Cleanup function
+    };
+  }, [isPaused]);
 
   const handleCellChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -55,6 +72,14 @@ function ScaleBoard() {
     }
   };
 
+  function handlePauseClick() {
+    setIsPaused((prevIsPaused) => !prevIsPaused);
+  }
+
+  function handleUnpauseClick() {
+    setIsPaused((prevIsPaused) => !prevIsPaused);
+  }
+
   const checkLifeCounter = () => {
     if (lifeCounter === 1) {
       alert("Game over! You have run out of lives.");
@@ -65,8 +90,26 @@ function ScaleBoard() {
   return (
     <div className="center-board">
       <div className="Board-header">
-        Sudoku!
-        {createdBoard && (
+        <div className="timer">
+          <Timer elapsedTime={elapsedTime} />
+        </div>
+        {!isPaused && (
+          <button onClick={handlePauseClick} className="pause-button">
+            Pause
+          </button>
+        )}
+        {isPaused && (
+          <button onClick={handleUnpauseClick} className="pause-button">
+            Unpause
+          </button>
+        )}
+        {isPaused && (
+          <div className="blur-container">
+            <p className="pause-text">Game is paused!</p>
+          </div>
+        )}
+
+        {!isPaused && createdBoard && (
           <table>
             {/* Mapping over rows and columns to generate Sudoku grid */}
             <tbody className="board-container">
@@ -111,11 +154,11 @@ function ScaleBoard() {
             </tbody>
           </table>
         )}
-        <div className="mistakeCounter">
-          Your remaining lives: {lifeCounter}
-          <FontAwesomeIcon icon={faHeart} />
-        </div>
         <div className="buttonContainer">
+          <div className="mistakeCounter">
+            Your remaining lives: {lifeCounter}
+            <FontAwesomeIcon icon={faHeart} />
+          </div>
           <button className="checkButton">Check</button>
           <button className="solveButton">Solve</button>
           <button className="resetButton">Reset</button>

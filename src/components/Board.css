@@ -1,6 +1,11 @@
 .center-board {
     text-align: center;
   }
+
+  .board-container {
+    padding-bottom: 100px;
+    position: relative;
+  }
   
   .Board-header {
     background: linear-gradient(320deg, rgb(199, 231, 255),rgb(199, 231, 255),rgb(255, 255, 255));
@@ -11,7 +16,11 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: rgba(0, 0, 0, 0.75);
-    
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 10px;
   }
   
   .cellInput {
@@ -19,7 +28,6 @@
     height: 50px;
     font-size: 20px;
     text-align: center;
-    padding: 0px;
     border: 1px solid black;
   }
   
@@ -39,14 +47,21 @@
     padding: 0;
   }
   
-  .buttonContainer {
-    margin-top: 10px;
-  }
-
   .mistakeCounter {
-    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 1vh;
+    padding-top: 1vh;
+  }
+  
+  .buttonContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; 
+    padding: 10px;
   }
 
+  
   .incorrect{
     color: red;
   }
@@ -55,53 +70,36 @@
     color: black;
   }
 
-  .checkButton {
+  .checkButton,
+  .solveButton,
+  .resetButton {
     background-color: aquamarine;
     font-weight: bold;
     padding: 12px 20px;
     border: none;
     border-radius: 10px;
     font-size: medium;
+    margin-right: 10px; /* Adjust margin as needed */
   }
+
   .solveButton {
     background-color: rgb(47, 194, 61);
-    font-weight: bold;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    font-size: medium
   }
+
   .resetButton {
-    background-color: rgb(63, 153, 123);
-    font-weight: bold;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    font-size: medium
+   background-color: rgb(63, 153, 123);
   }
+
   .checkButton:hover {
     background-color: rgb(107, 214, 178);
-    font-weight: bold;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    font-size: medium;
   }
+
   .solveButton:hover {
     background-color: rgb(40, 165, 52);
-    font-weight: bold;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    font-size: medium
   }
+
   .resetButton:hover {
     background-color: rgb(53, 129, 104);
-    font-weight: bold;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    font-size: medium
   }
   .bBorder {
     border-bottom: 2px solid black;
@@ -111,4 +109,47 @@
   .rBorder {
     border-right: 2px solid black;
   }
+
+  .blur-container {
+    background: inherit; 
+    border-color: rgba(0, 0, 0, 0.901); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.268);
+    width: 80%;
+    height: 70vh;
+    margin: 1vh;
+    align-items: center;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin: 5px;
+    margin-bottom: 100px;
+    position: relative;
+    top: 15%;
+    margin-top: 40px;
+  }
+
+  .pause-text {
+    font-size: 50px;
+  }
+
+  .timer {
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .pause-button {
+    top: 5%;
+    position: fixed;
+    margin-top: 2vh;
+
+  }
+
+  .timer {
+    position: fixed;
+    padding-top: 2vh;
+  }
+
+
+   
   
