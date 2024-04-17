@@ -6,11 +6,11 @@ TODOS:
  */
 
 // Temp values:
-type givenBoard = number[][];
+type boardType = number[][];
 const boardSize = 9;
 const emptyCell = -1;
 
-function eliminateSudoku(board: givenBoard): givenBoard | null {
+function eliminateSudoku(board: boardType): boardType | null {
     // Make a copy of the board (Found online. Reformat later when input is proberly formatted.)
     const solvedBoard = JSON.parse(JSON.stringify(board));
 
@@ -41,22 +41,26 @@ function eliminateSudoku(board: givenBoard): givenBoard | null {
     const solve = () => {
         for (let row = 0; row < boardSize; row++) {
             for (let col = 0; col < boardSize; col++) {
-                for (let num = 1; num <= boardSize; num++) {
-                    if (isValidPlacement(row, col, num)) {
-                        solvedBoard[row][col] = num;
-
-                        // Checks if this number leads to a solution
-                        if (solve()) {
-                            return board
-                        } else {
-                            solvedBoard[row][col] = emptyCell; // If no solution is found, set the cell as empty and move on
+                if (solvedBoard[row][col] === emptyCell) {
+                    for (let num = 1; num <= boardSize; num++) {
+                        if (isValidPlacement(row, col, num)) {
+                            solvedBoard[row][col] = num;
+    
+                            // Checks if this number leads to a solution
+                            if (solve()) {
+                                return true
+                            } else {
+                                solvedBoard[row][col] = emptyCell; // If no solution is found, set the cell as empty and try again with num++
+                            }
                         }
                     }
-
+                    // No num can be placed in the cell, therefore:
+                    return false
                 }
             }
         }
-        return false // TODO - make the actual solver
+        // If all cells are filled: 
+        return true
     }
 
     // Returns the solved board if it can be solved. Otherwise return null
