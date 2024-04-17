@@ -1,4 +1,4 @@
-import { Form, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Board.css";
 import {
   generateSudokuBoard,
@@ -14,16 +14,21 @@ function ScaleBoard() {
   const navigate = useNavigate();
   const [createdBoard, setCreatedBoard] = useState<number[][]>([]);
   const [originalBoard, setOriginalBoard] = useState<number[][]>([]);
+  const [resetBoard, setResetBoard] = useState<number[][]>([]);
   const boardSize = getBoardSize();
   const [lifeCounter, setLifeCounter] = useState<number>(3);
   const [elapsedTime, setElapsedTime] = useState<number>(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isFinished, setIsFinished] = useState<Boolean>(false);
 
   const createBoards = () => {
+    setIsFinished(false);
+    setLifeCounter(3);
     const fullBoard = generateFullSudokuBoard();
     setOriginalBoard(fullBoard);
     const editedBoard = generateSudokuBoard(fullBoard);
     setCreatedBoard(editedBoard);
+    setResetBoard([...editedBoard]);
   };
 
   useEffect(() => {
@@ -60,8 +65,13 @@ function ScaleBoard() {
     setCreatedBoard(newBoard);
 
     const inputs = event.target;
+    const isBoardFinished = newBoard.every((row, rowIndex) =>
+      row.every((col, colIndex) => col === originalBoard[rowIndex][colIndex])
+    );
 
-    if (inputValue === originalBoard[row][col] || inputValue === -1) {
+    if (isBoardFinished) {
+      setIsFinished(true);
+    } else if (inputValue === originalBoard[row][col] || inputValue === -1) {
       inputs.classList.remove("incorrect");
       inputs.classList.add("correct");
     } else {
@@ -87,6 +97,16 @@ function ScaleBoard() {
     }
   };
 
+  const navigateHome = () => {
+    navigate("/");
+  };
+
+  const resetGame = () => {
+    setIsFinished(false);
+    setLifeCounter(3);
+    setCreatedBoard([...resetBoard]);
+  };
+
   return (
     <div className="center-board">
       <div className="Board-header">
@@ -108,8 +128,7 @@ function ScaleBoard() {
             <p className="pause-text">Game is paused!</p>
           </div>
         )}
-
-        {!isPaused && createdBoard && (
+        {!isFinished && createdBoard && (
           <table>
             {/* Mapping over rows and columns to generate Sudoku grid */}
             <tbody className="board-container">
@@ -159,10 +178,25 @@ function ScaleBoard() {
             Your remaining lives: {lifeCounter}
             <FontAwesomeIcon icon={faHeart} />
           </div>
-          <button className="checkButton">Check</button>
           <button className="solveButton">Solve</button>
-          <button className="resetButton">Reset</button>
         </div>
+        {isFinished && (
+          <div className="finishedBox">
+            Well done! You completed the Sudoku puzzle!
+            <div>
+              <button onClick={createBoards} className="newGame">
+                New Game
+              </button>
+              <button onClick={resetGame} className="resetGame">
+                Reset Game
+              </button>
+              <button className="viewLeaderboard">View Leaderboard</button>
+              <button onClick={navigateHome} className="menu">
+                Menu
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

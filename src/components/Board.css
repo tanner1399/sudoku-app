@@ -39,7 +39,6 @@
     border: 3px solid;
     color: black;
     margin: auto;
-    
   }
   
   td {
@@ -69,37 +68,69 @@
     color: black;
   }
 
-  .checkButton,
-  .solveButton,
-  .resetButton {
+  .finishedBox{
+    font-size: 30px;
+    padding: 100px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: lightblue;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .newGame{
+    background-color: rgb(151, 186, 198);
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: medium;
+  }
+
+  .resetGame{
+    background-color: rgb(151, 186, 198);
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: medium;
+  }
+
+  .menu{
+    background-color: rgb(151, 186, 198);
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: medium;
+  }
+
+  .viewLeaderboard{
+    background-color: rgb(151, 186, 198);
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: medium;
+  }
+
+  .solveButton {
     background-color: aquamarine;
     font-weight: bold;
     padding: 12px 20px;
     border: none;
     border-radius: 10px;
     font-size: medium;
-    margin-right: 10px; /* Adjust margin as needed */
-  }
-
-  .solveButton {
     background-color: rgb(47, 194, 61);
-  }
-
-  .resetButton {
-   background-color: rgb(63, 153, 123);
-  }
-
-  .checkButton:hover {
-    background-color: rgb(107, 214, 178);
+    margin-right: 10px;
   }
 
   .solveButton:hover {
     background-color: rgb(40, 165, 52);
   }
 
-  .resetButton:hover {
-    background-color: rgb(53, 129, 104);
-  }
   .bBorder {
     border-bottom: 2px solid black;
     
