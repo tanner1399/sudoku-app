@@ -122,7 +122,25 @@ export function generateSudokuBoard(fullBoard: number[][]): number[][] {
   }
 
   let board = fullBoard.map((row) => [...row]);
+
+  const generationTimes = [];
+  const startTime = performance.now();
+
   fillBoard(board);
+
+  const endtime = performance.now();
+
+  generationTimes.push({
+    difficulty: getDifficulty(),
+    boardSize: getBoardSize(),
+    time: endtime - startTime,
+  });
+  
+  generationTimes.forEach(entry => {
+    console.log(`${entry.difficulty}\t${entry.boardSize}\t${entry.time}`);
+  });
+  
+  
   removeNumbers(board, blanks); // Remove numbers to create a puzzle
   return board;
 }
