@@ -30,7 +30,8 @@ function ScaleBoard() {
     setOriginalBoard(fullBoard);
     const editedBoard = generateSudokuBoard(fullBoard);
     setCreatedBoard(editedBoard);
-    setResetBoard([...editedBoard]);
+    let copyOfEditedBoard = editedBoard.map((row) => [...row]);
+    setResetBoard(copyOfEditedBoard);
   };
 
   const solveSudoku = () => {
