@@ -23,6 +23,7 @@ function ScaleBoard() {
   const [isFinished, setIsFinished] = useState<Boolean>(false);
 
   const createBoards = () => {
+    setElapsedTime(0);
     setIsFinished(false);
     setLifeCounter(3);
     const fullBoard = generateFullSudokuBoard();
@@ -107,9 +108,10 @@ function ScaleBoard() {
   };
 
   const resetGame = () => {
+    setElapsedTime(0);
     setIsFinished(false);
     setLifeCounter(3);
-    setCreatedBoard([...resetBoard]);
+    setCreatedBoard(resetBoard);
   };
 
   return (
@@ -183,7 +185,9 @@ function ScaleBoard() {
             Your remaining lives: {lifeCounter}
             <FontAwesomeIcon icon={faHeart} />
           </div>
-          <button onClick={solveSudoku} className="solveButton">Solve</button>
+          <button onClick={solveSudoku} className="solveButton">
+            Solve
+          </button>
         </div>
         {isFinished && (
           <div className="finishedBox">
