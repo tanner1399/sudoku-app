@@ -50,6 +50,7 @@
     position: relative;
     padding-bottom: 1vh;
     padding-top: 1vh;
+    font-size: 20px;
   }
   
   .buttonContainer {
@@ -146,6 +147,7 @@
     top: 0;
     right: 0;
     left: 0;
+    font-size: 20px;
   }
 
   .pause-button {
@@ -153,6 +155,15 @@
     position: relative;
     margin-top: 2vh;
     margin-bottom: 2vh;
+    background-color: lightblue;
+    background: lightblue;
+    border-color: rgb(137, 172, 184);
+    border-width: 1px;
+    border-radius: 5px;
+  }
+
+  .pause-button:hover {
+    background-color: rgb(140, 174, 185);
   }
 
   .timer {
