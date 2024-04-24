@@ -189,6 +189,9 @@ function ScaleBoard() {
           <button onClick={solveSudoku} className="solveButton">
             Solve
           </button>
+          <button onClick={createBoards} className="newGame">
+            New Game
+          </button>
         </div>
         {isFinished && (
           <div className="finishedBox">
