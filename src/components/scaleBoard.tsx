@@ -22,6 +22,11 @@ function ScaleBoard() {
   const [isPaused, setIsPaused] = useState(false);
   const [isFinished, setIsFinished] = useState<Boolean>(false);
 
+  const [showPopup, setShowPopup] = useState<boolean>(false);
+    const handleClosePopup = () => { 
+      setShowPopup(false)
+    }
+
   const createBoards = () => {
     setElapsedTime(0);
     setIsFinished(false);
@@ -34,8 +39,24 @@ function ScaleBoard() {
     setResetBoard(copyOfEditedBoard);
   };
 
+// Solve sudoku w. EliminationSolver.tsx. Shows popup if no solution is found.
+  // TODO : The popup needs to be tested with a sudoku that can't be solved. But how? 
   const solveSudoku = () => {
-    setCreatedBoard(eliminateSudoku(createdBoard)!);
+    const solvedElimBoard = eliminateSudoku(createdBoard)
+    if (solvedElimBoard !== null) {
+      setCreatedBoard(solvedElimBoard);
+    } else {
+      setShowPopup(true)
+    }
+
+     {showPopup && (
+      <div className="popup">
+        <div className="popup-content">
+          <p>No solution exists for the Sudoku puzzle.</p>
+          <button onClick={handleClosePopup}>Close</button>
+        </div>
+      </div>
+    )}
   };
 
   useEffect(() => {
