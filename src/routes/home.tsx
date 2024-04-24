@@ -40,8 +40,8 @@ export default function Root() {
     localStorage.setItem("difficulty", "Hard");
   }
 
-  const handleBoardSize = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const size = e.target.value;
+  const handleBoardSize = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const size = event.target.value;
     setBoardSize(size);
   };
 
@@ -81,13 +81,18 @@ export default function Root() {
             Please select a board size & difficulty
           </p>
           <form>
-            <input
-              className="board-size-input"
-              type="number"
-              value={boardSize}
-              placeholder="Enter board size"
-              onChange={handleBoardSize}
-            ></input>
+            <select value={boardSize} onChange={handleBoardSize}>
+              <option value="" disabled>
+                Select board size
+              </option>
+              <option value={4}> 4 </option>
+              <option value={9}> 9</option>
+              <option value={16}> 16</option>
+              <option value={25}> 25</option>
+              <option value={36}> 36</option>
+              <option value={49}> 49</option>
+              <option value={64}> 64</option>
+            </select>
           </form>
         </div>
       )}
