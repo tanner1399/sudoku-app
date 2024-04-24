@@ -14,20 +14,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
+    font-size: calc(0.1vh + 2vmin);
     color: rgba(0, 0, 0, 0.75);
     top: 0;
     left: 0;
     right: 0;
     padding-top: 10px;
+    position: fixed;
   }
   
   .cellInput {
-    width: 50px;
-    height: 50px;
-    font-size: 20px;
+    width: 7vh;
+    height: 7vh;
+    font-size: 3vh;
     text-align: center;
-    border: 1px solid black;
+    border: 0.1vh solid black;
   }
   
   .board-row {
@@ -36,7 +37,7 @@
   
   table {
     border-collapse: collapse;
-    border: 3px solid;
+    border: 0.3vh solid;
     color: black;
     margin: auto;
   }
@@ -56,7 +57,7 @@
     bottom: 0;
     left: 0;
     width: 100%; 
-    padding: 10px;
+    padding: 1vh;
   }
 
   
@@ -69,51 +70,29 @@
   }
 
   .finishedBox{
-    font-size: 30px;
-    padding: 100px;
+    padding: 15vh;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: lightblue;
-    border-radius: 5px;
+    border-radius: 0.5vh;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
-  .newGame{
+  .newGame, .resetGame, .menu, .viewLeaderboard{
     background-color: rgb(151, 186, 198);
     font-weight: bold;
-    padding: 12px 20px;
+    padding: 1.2vh 2vh;
     border: none;
-    border-radius: 10px;
+    border-radius: 1vh;
     font-size: medium;
+    margin: 0.3vh;
   }
 
-  .resetGame{
-    background-color: rgb(151, 186, 198);
-    font-weight: bold;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    font-size: medium;
-  }
+  .newGame:hover, .resetGame:hover, .menu:hover, .viewLeaderboard:hover{
+    background-color: rgb(115, 143, 152);
 
-  .menu{
-    background-color: rgb(151, 186, 198);
-    font-weight: bold;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    font-size: medium;
-  }
-
-  .viewLeaderboard{
-    background-color: rgb(151, 186, 198);
-    font-weight: bold;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    font-size: medium;
   }
 
   .solveButton {
@@ -125,6 +104,7 @@
     font-size: medium;
     background-color: rgb(47, 194, 61);
     margin-right: 10px;
+    margin-bottom: 10px;
   }
 
   .solveButton:hover {
