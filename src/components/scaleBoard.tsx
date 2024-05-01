@@ -21,14 +21,16 @@ function ScaleBoard() {
   const [elapsedTime, setElapsedTime] = useState<number>(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isFinished, setIsFinished] = useState<Boolean>(false);
-
+  const [resetOnce, setResetOnce] = useState<Boolean>(false);
   const [showPopup, setShowPopup] = useState<boolean>(false);
-    const handleClosePopup = () => { 
-      setShowPopup(false)
-    }
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
 
   const createBoards = () => {
     setElapsedTime(0);
+    setResetOnce(false);
     setIsFinished(false);
     setLifeCounter(3);
     const fullBoard = generateFullSudokuBoard();
@@ -39,24 +41,26 @@ function ScaleBoard() {
     setResetBoard(copyOfEditedBoard);
   };
 
-// Solve sudoku w. EliminationSolver.tsx. Shows popup if no solution is found.
-  // TODO : The popup needs to be tested with a sudoku that can't be solved. But how? 
+  // Solve sudoku w. EliminationSolver.tsx. Shows popup if no solution is found.
+  // TODO : The popup needs to be tested with a sudoku that can't be solved. But how?
   const solveSudoku = () => {
-    const solvedElimBoard = eliminateSudoku(createdBoard)
+    const solvedElimBoard = eliminateSudoku(createdBoard);
     if (solvedElimBoard !== null) {
       setCreatedBoard(solvedElimBoard);
     } else {
-      setShowPopup(true)
+      setShowPopup(true);
     }
 
-     {showPopup && (
-      <div className="popup">
-        <div className="popup-content">
-          <p>No solution exists for the Sudoku puzzle.</p>
-          <button onClick={handleClosePopup}>Close</button>
+    {
+      showPopup && (
+        <div className="popup">
+          <div className="popup-content">
+            <p>No solution exists for the Sudoku puzzle.</p>
+            <button onClick={handleClosePopup}>Close</button>
+          </div>
         </div>
-      </div>
-    )}
+      );
+    }
   };
 
   useEffect(() => {
@@ -118,6 +122,12 @@ function ScaleBoard() {
     setIsPaused((prevIsPaused) => !prevIsPaused);
   }
 
+  const checkResetOnce = () => {
+    if (resetOnce === true) {
+      alert("You have already resetted the game");
+    }
+  };
+
   const checkLifeCounter = () => {
     if (lifeCounter === 1) {
       alert("Game over! You have run out of lives.");
@@ -130,10 +140,15 @@ function ScaleBoard() {
   };
 
   const resetGame = () => {
-    setElapsedTime(0);
-    setIsFinished(false);
-    setLifeCounter(3);
-    setCreatedBoard(resetBoard);
+    setResetOnce(true);
+    if (resetOnce === false) {
+      setElapsedTime(0);
+      setIsFinished(false);
+      setLifeCounter(3);
+      setCreatedBoard(resetBoard);
+    } else {
+      checkResetOnce();
+    }
   };
 
   return (
