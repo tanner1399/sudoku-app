@@ -1,176 +1,175 @@
 .center-board {
-    text-align: center;
-  }
+  text-align: center;
+}
 
-  .board-container {
-    padding-bottom: 100px;
-    position: relative;
-  }
-  
-  .Board-header {
-    background: linear-gradient(320deg, rgb(199, 231, 255),rgb(199, 231, 255),rgb(255, 255, 255));
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(0.1vh + 2vmin);
-    color: rgba(0, 0, 0, 0.75);
-    top: 0;
-    left: 0;
-    right: 0;
-    padding-top: 10px;
-    position: fixed;
-  }
-  
-  .cellInput {
-    width: 7vh;
-    height: 7vh;
-    font-size: 3vh;
-    text-align: center;
-    border: 0.1vh solid black;
-  }
-  
-  .board-row {
-    display: flex;
-  }
-  
-  table {
-    border-collapse: collapse;
-    border: 0.3vh solid;
-    color: black;
-    margin: auto;
-  }
-  
-  td {
-    padding: 0;
-  }
-  
-  .mistakeCounter {
-    position: relative;
-    padding-bottom: 1vh;
-    padding-top: 1vh;
-    font-size: 20px;
-  }
-  
-  .buttonContainer {
-    position: relativ;
-    bottom: 0;
-    left: 0;
-    width: 100%; 
-    padding: 1vh;
-  }
+.board-container {
+  padding-bottom: 10vh; /* Changed to viewport height */
+  position: relative;
+}
 
-  
-  .incorrect{
-    color: red;
-  }
+.Board-header {
+  background: linear-gradient(320deg, rgb(199, 231, 255), rgb(199, 231, 255), rgb(255, 255, 255));
+  height: 100vh; /* Changed to viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(1vh + 2vmin); /* Changed to viewport height */
+  color: rgba(0, 0, 0, 0.75);
+  top: 0;
+  left: 0;
+  right: 0;
+}
 
-  .correct{
-    color: black;
-  }
+.cellInput {
+  width: 3vw; /* Changed to viewport width */
+  height: 3vw; /* Changed to viewport width */
+  font-size: 2vh; /* Changed to viewport height */
+  text-align: center;
+  border: 0.1vh solid black;
+  position: relative;
+}
 
-  .finishedBox{
-    padding: 15vh;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: lightblue;
-    border-radius: 0.5vh;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+.board-row {
+  display: flex;
+}
 
-  .newGame, .resetGame, .menu, .viewLeaderboard{
-    background-color: rgb(151, 186, 198);
-    font-weight: bold;
-    padding: 1.2vh 2vh;
-    border: none;
-    border-radius: 1vh;
-    font-size: medium;
-    margin: 0.3vh;
-  }
+table {
+  border-collapse: collapse;
+  border: 0.3vh solid;
+  color: black;
+  margin: auto;
+}
 
-  .newGame:hover, .resetGame:hover, .menu:hover, .viewLeaderboard:hover{
-    background-color: rgb(115, 143, 152);
+td {
+  padding: 0;
+}
 
-  }
+.mistakeCounter {
+  position: relative;
+  padding-bottom: 1vh;
+  padding-top: 1vh;
+  font-size: 2vh; /* Changed to viewport height */
+}
 
-  .solveButton {
-    background-color: aquamarine;
-    font-weight: bold;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    font-size: medium;
-    background-color: rgb(47, 194, 61);
-    margin-right: 10px;
-    margin-bottom: 10px;
-  }
+.buttonContainer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1vh;
+}
 
-  .solveButton:hover {
-    background-color: rgb(40, 165, 52);
-  }
+.incorrect {
+  color: red;
+}
 
-  .bBorder {
-    border-bottom: 2px solid black;
-    
-  }
-  
-  .rBorder {
-    border-right: 2px solid black;
-  }
+.correct {
+  color: black;
+}
 
-  .blur-container {
-    background: inherit; 
-    border-color: rgba(0, 0, 0, 0.901); 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.268);
-    width: 80%;
-    height: 70vh;
-    margin: 1vh;
-    align-items: center;
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    margin: 5px;
-    margin-bottom: 100px;
-    position: relative;
-    top: 15%;
-    margin-top: 40px;
-  }
+.finishedBox {
+  padding: 15vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: lightblue;
+  border-radius: 0.5vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-size: 3vh; /* Changed to viewport height */
+}
 
-  .pause-text {
-    font-size: 50px;
-  }
+.newGame,
+.resetGame,
+.menu,
+.viewLeaderboard {
+  background-color: rgb(151, 186, 198);
+  font-weight: bold;
+  padding: 1.2vh 2vh;
+  border: none;
+  border-radius: 1vh;
+  font-size: medium;
+  margin: 0.3vh;
+}
 
-  .timer {
-    top: 0;
-    right: 0;
-    left: 0;
-    font-size: 20px;
-  }
+.newGame:hover,
+.resetGame:hover,
+.menu:hover,
+.viewLeaderboard:hover {
+  background-color: rgb(115, 143, 152);
+}
 
-  .pause-button {
-    top: 5%;
-    position: relative;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-    background-color: lightblue;
-    background: lightblue;
-    border-color: rgb(137, 172, 184);
-    border-width: 1px;
-    border-radius: 5px;
-  }
+.solveButton {
+  background-color: aquamarine;
+  font-weight: bold;
+  padding: 2vh 3vh; /* Changed to viewport height */
+  border: none;
+  border-radius: 10px;
+  font-size: medium;
+  background-color: rgb(47, 194, 61);
+  margin-right: 2vw; /* Changed to viewport width */
+  margin-bottom: 2vh;
+}
 
-  .pause-button:hover {
-    background-color: rgb(140, 174, 185);
-  }
+.solveButton:hover {
+  background-color: rgb(40, 165, 52);
+}
 
-  .timer {
-    position: relative;
-    padding-top: 2vh;
-  }
+.bBorder {
+  border-bottom: 2px solid black;
+}
 
+.rBorder {
+  border-right: 2px solid black;
+}
 
-   
-  
+.blur-container {
+  background: inherit;
+  border-color: rgba(0, 0, 0, 0.901);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.268);
+  width: 80%;
+  height: 70vh;
+  margin: 1vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  margin-bottom: 100px;
+  position: relative;
+  top: 15%;
+  margin-top: 40px;
+}
+
+.pause-text {
+  font-size: 5vh; /* Changed to viewport height */
+}
+
+.timer {
+  top: 0;
+  right: 0;
+  left: 0;
+  font-size: 2vh; /* Changed to viewport height */
+}
+
+.pause-button {
+  top: 5%;
+  position: relative;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  background-color: lightblue;
+  background: lightblue;
+  border-color: rgb(137, 172, 184);
+  border-width: 1px;
+  border-radius: 5px;
+}
+
+.pause-button:hover {
+  background-color: rgb(140, 174, 185);
+}
+
+.timer {
+  position: relative;
+  padding-top: 2vh;
+}

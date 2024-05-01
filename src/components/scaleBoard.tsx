@@ -157,7 +157,7 @@ function ScaleBoard() {
             <p className="pause-text">Game is paused!</p>
           </div>
         )}
-        {!isFinished && createdBoard && (
+        {!isFinished && createdBoard && !isPaused && (
           <table>
             {/* Mapping over rows and columns to generate Sudoku grid */}
             <tbody className="board-container">
