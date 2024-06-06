@@ -1,7 +1,32 @@
+/* 
+TODOS:
+Upgrade the EliminationSolver by: 
+- First find cells with (8) cells filled in a row, col or box and put in the missing number
+*/
+
 import { getBoardSize } from "../components/sudokuGenerator";
 
 // Temp values:
 type boardType = number[][];
+
+// Given an array of numbers (the numbers in a col, row or box) find what numbers are missing from that element.
+// If there is only one missing number -> return that missing number
+function findMissingNum(foundNums: Number[]){ 
+    const boardSize = getBoardSize();
+    // TODO: Can the initialisation of allNumbers be moved to only run once?
+    const allNumbers = new Array(boardSize)
+    for (let i = 1; i <= boardSize; i++){
+        allNumbers[i] = i
+    }
+
+    // Match allNumbers[] and foundNums[]
+    let missing = allNumbers.filter(item => foundNums.indexOf(item) < 0);
+    if (missing.length = 1) {
+        return missing[0]
+    }
+}
+
+// Merge the two functions elimSudoku and findMissing
 
 export function eliminateSudoku(board: boardType): boardType | null {
     const boardSize = getBoardSize();
