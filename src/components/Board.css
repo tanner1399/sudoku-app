@@ -2,19 +2,22 @@
   text-align: center;
 }
 
+body {
+  background: bisque;
+}
+
 .board-container {
-  padding-bottom: 10vh; /* Changed to viewport height */
+  padding-bottom: 10vh;
   position: relative;
 }
 
 .Board-header {
-  background: linear-gradient(320deg, rgb(199, 231, 255), rgb(199, 231, 255), rgb(255, 255, 255));
-  height: 100vh; /* Changed to viewport height */
+  background-color: bisque;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(1vh + 2vmin); /* Changed to viewport height */
+  font-size: calc(1vh + 2vmin); 
   color: rgba(0, 0, 0, 0.75);
   top: 0;
   left: 0;
@@ -22,9 +25,9 @@
 }
 
 .cellInput {
-  width: 3vw; /* Changed to viewport width */
-  height: 3vw; /* Changed to viewport width */
-  font-size: 2vh; /* Changed to viewport height */
+  width: 3vw; 
+  height: 3vw; 
+  font-size: 2vh; 
   text-align: center;
   border: 0.1vh solid black;
   position: relative;
@@ -49,7 +52,7 @@ td {
   position: relative;
   padding-bottom: 1vh;
   padding-top: 1vh;
-  font-size: 2vh; /* Changed to viewport height */
+  font-size: 2vh;
 }
 
 .buttonContainer {
@@ -74,17 +77,17 @@ td {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: lightblue;
+  background-color: bisque;
   border-radius: 0.5vh;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-size: 3vh; /* Changed to viewport height */
+  font-size: 3vh; 
 }
 
 .newGame,
 .resetGame,
 .menu,
 .viewLeaderboard {
-  background-color: rgb(151, 186, 198);
+  background-color: rgb(198, 176, 150);
   font-weight: bold;
   padding: 1.2vh 2vh;
   border: none;
@@ -97,18 +100,18 @@ td {
 .resetGame:hover,
 .menu:hover,
 .viewLeaderboard:hover {
-  background-color: rgb(115, 143, 152);
+  background-color: rgb(144, 127, 108);
 }
 
 .solveButton {
   background-color: aquamarine;
   font-weight: bold;
-  padding: 2vh 3vh; /* Changed to viewport height */
+  padding: 2vh 3vh; 
   border: none;
   border-radius: 10px;
   font-size: medium;
   background-color: rgb(47, 194, 61);
-  margin-right: 2vw; /* Changed to viewport width */
+  margin-right: 2vw; 
   margin-bottom: 2vh;
 }
 
@@ -143,14 +146,14 @@ td {
 }
 
 .pause-text {
-  font-size: 5vh; /* Changed to viewport height */
+  font-size: 5vh;
 }
 
 .timer {
   top: 0;
   right: 0;
   left: 0;
-  font-size: 2vh; /* Changed to viewport height */
+  font-size: 2vh;
 }
 
 .pause-button {
@@ -158,15 +161,15 @@ td {
   position: relative;
   margin-top: 2vh;
   margin-bottom: 2vh;
-  background-color: lightblue;
-  background: lightblue;
-  border-color: rgb(137, 172, 184);
+  background-color: rgb(198, 176, 150);
+  background: rgb(198, 176, 150);
+  border-color: rgb(198, 176, 150);
   border-width: 1px;
   border-radius: 5px;
 }
 
 .pause-button:hover {
-  background-color: rgb(140, 174, 185);
+  background-color: rgb(144, 127, 108);
 }
 
 .timer {

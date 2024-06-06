@@ -81,7 +81,11 @@ export default function Root() {
             Please select a board size & difficulty
           </p>
           <form>
-            <select value={boardSize} onChange={handleBoardSize}>
+            <select
+              className="sizeSelector"
+              value={boardSize}
+              onChange={handleBoardSize}
+            >
               <option value="" disabled>
                 Select board size
               </option>

@@ -154,10 +154,12 @@ function ScaleBoard() {
   return (
     <div className="center-board">
       <div className="Board-header">
-        <div className="timer">
-          <Timer elapsedTime={elapsedTime} />
-        </div>
-        {!isPaused && (
+        {!isFinished && (
+          <div className="timer">
+            <Timer elapsedTime={elapsedTime} />
+          </div>
+        )}
+        {!isPaused && !isFinished && (
           <button onClick={handlePauseClick} className="pause-button">
             Pause
           </button>
@@ -174,7 +176,6 @@ function ScaleBoard() {
         )}
         {!isFinished && createdBoard && !isPaused && (
           <table>
-            {/* Mapping over rows and columns to generate Sudoku grid */}
             <tbody className="board-container">
               {createdBoard.map((row, rowIndex) => (
                 <tr
@@ -217,18 +218,20 @@ function ScaleBoard() {
             </tbody>
           </table>
         )}
-        <div className="buttonContainer">
-          <div className="mistakeCounter">
-            Your remaining lives: {lifeCounter}
-            <FontAwesomeIcon icon={faHeart} />
+        {!isFinished && createdBoard && !isPaused && (
+          <div className="buttonContainer">
+            <div className="mistakeCounter">
+              Your remaining lives: {lifeCounter}
+              <FontAwesomeIcon icon={faHeart} />
+            </div>
+            <button onClick={solveSudoku} className="solveButton">
+              Solve
+            </button>
+            <button onClick={createBoards} className="newGame">
+              New Game
+            </button>
           </div>
-          <button onClick={solveSudoku} className="solveButton">
-            Solve
-          </button>
-          <button onClick={createBoards} className="newGame">
-            New Game
-          </button>
-        </div>
+        )}
         {isFinished && (
           <div className="finishedBox">
             Well done! You completed the Sudoku puzzle!
