@@ -75,7 +75,7 @@ function ScaleBoard() {
   useEffect(() => {
     let intervalId: number | null = null;
 
-    if (!isPaused) {
+    if (!isPaused && !isFinished) {
       intervalId = setInterval(() => {
         setElapsedTime((prevElapsedTime) => prevElapsedTime + 1);
       }, 1000);
