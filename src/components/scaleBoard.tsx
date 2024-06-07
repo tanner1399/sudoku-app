@@ -82,7 +82,7 @@ function ScaleBoard() {
     }
 
     return () => {
-      if (intervalId) clearInterval(intervalId); // Cleanup function
+      if (intervalId) clearInterval(intervalId);
     };
   }, [isPaused]);
 
@@ -95,22 +95,30 @@ function ScaleBoard() {
     const newBoard = [...createdBoard];
     newBoard[row][col] = inputValue;
     setCreatedBoard(newBoard);
+  };
 
+  const handleCellBlur = (
+    event: React.FocusEvent<HTMLInputElement>,
+    row: number,
+    col: number
+  ) => {
     const inputs = event.target;
-    const isBoardFinished = newBoard.every((row, rowIndex) =>
+    const inputValue = parseInt(inputs.value, 10) || -1;
+
+    const isBoardFinished = createdBoard.every((row, rowIndex) =>
       row.every((col, colIndex) => col === originalBoard[rowIndex][colIndex])
     );
 
-    if (isBoardFinished) {
-      setIsFinished(true);
-    } else if (inputValue === originalBoard[row][col] || inputValue === -1) {
-      inputs.classList.remove("incorrect");
-      inputs.classList.add("correct");
-    } else {
-      inputs.classList.remove("correct");
-      inputs.classList.add("incorrect");
-      setLifeCounter((prevLifeCounter) => prevLifeCounter - 1);
-      checkLifeCounter();
+    if (!isBoardFinished) {
+      if (inputValue === originalBoard[row][col] || inputValue === -1) {
+        inputs.classList.remove("incorrect");
+        inputs.classList.add("correct");
+      } else {
+        inputs.classList.remove("correct");
+        inputs.classList.add("incorrect");
+        setLifeCounter((prevLifeCounter) => prevLifeCounter - 1);
+        checkLifeCounter();
+      }
     }
   };
 
@@ -197,6 +205,7 @@ function ScaleBoard() {
                         onChange={(e) =>
                           handleCellChange(e, rowIndex, colIndex)
                         }
+                        onBlur={(e) => handleCellBlur(e, rowIndex, colIndex)}
                         value={col === -1 ? "" : col}
                         className={`cellInput ${
                           createdBoard[rowIndex][colIndex] ===
