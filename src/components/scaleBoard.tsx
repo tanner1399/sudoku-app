@@ -251,7 +251,6 @@ function ScaleBoard() {
               <button onClick={resetGame} className="resetGame">
                 Reset Game
               </button>
-              <button className="viewLeaderboard">View Leaderboard</button>
               <button onClick={navigateHome} className="menu">
                 Menu
               </button>
