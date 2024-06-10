@@ -22,7 +22,8 @@ function ScaleBoard() {
   const [isPaused, setIsPaused] = useState(false);
   const [isFinished, setIsFinished] = useState<Boolean>(false);
   const [resetOnce, setResetOnce] = useState<Boolean>(false);
-  const [showPopup, setShowPopup] = useState<boolean>(false);
+  const [showPopup, setShowPopup] = useState<Boolean>(false);
+  const [givenHint, setGivenHint] = useState<Boolean>(false);
 
   const handleClosePopup = () => {
     setShowPopup(false);
@@ -159,6 +160,31 @@ function ScaleBoard() {
     }
   };
 
+  const giveHint = () => {
+    if (givenHint === false) {
+      const emptyCells: { row: number; col: number }[] = [];
+
+      createdBoard.forEach((row, rowIndex) => {
+        row.forEach((cell, colIndex) => {
+          if (cell === -1) {
+            emptyCells.push({ row: rowIndex, col: colIndex });
+          }
+        });
+      });
+
+      if (emptyCells.length > 0) {
+        const randomCell = Math.floor(Math.random() * emptyCells.length);
+        const { row, col } = emptyCells[randomCell];
+        const newBoard = [...createdBoard];
+        newBoard[row][col] = originalBoard[row][col];
+        setCreatedBoard(newBoard);
+        setGivenHint(true);
+      }
+    } else {
+      alert("You have already used a hint!");
+    }
+  };
+
   return (
     <div className="center-board">
       <div className="Board-header">
@@ -238,6 +264,9 @@ function ScaleBoard() {
             </button>
             <button onClick={createBoards} className="newGame">
               New Game
+            </button>
+            <button onClick={giveHint} className="hint">
+              Hint
             </button>
           </div>
         )}
