@@ -62,7 +62,7 @@ function fillBoard(board: number[][]): boolean {
 }
 
 // Function to epty a given numbers of cell
-export function removeNumbers(board: number[][], blanks: number): number[][] {
+function removeNumbers(board: number[][], blanks: number): number[][] {
   let attempts = blanks;
 
   while (attempts > 0) {
@@ -135,12 +135,11 @@ export function generateSudokuBoard(fullBoard: number[][]): number[][] {
     boardSize: getBoardSize(),
     time: endtime - startTime,
   });
-  
-  generationTimes.forEach(entry => {
+
+  generationTimes.forEach((entry) => {
     console.log(`${entry.difficulty}\t${entry.boardSize}\t${entry.time}`);
   });
-  
-  
+
   removeNumbers(board, blanks); // Remove numbers to create a puzzle
   return board;
 }

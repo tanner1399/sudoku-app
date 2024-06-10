@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./home.css";
 import { useNavigate } from "react-router-dom";
 
-export default function Root() {
+function Root() {
   useEffect(() => {
     document.title = "Sudoku"; // Set title of page
   }, []);
@@ -119,3 +119,5 @@ export default function Root() {
     </div>
   );
 }
+
+export default Root;
