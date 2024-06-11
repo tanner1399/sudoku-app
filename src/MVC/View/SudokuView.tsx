@@ -1,5 +1,5 @@
 import React from "react";
-import "../components/Board.css";
+import "./Board.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import Timer from "./timer";
