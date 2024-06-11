@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import Root from "./routes/home.tsx";
 import BoardController from "./MVC/Controller/SudokuController.tsx";
+import Menu from "./routes/home.tsx";
 
 const router = createBrowserRouter([
   {
@@ -12,7 +12,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <Root />,
+    element: <Menu />,
   },
 ]);
 

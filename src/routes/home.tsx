@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./home.css";
 import { useNavigate } from "react-router-dom";
 
-function Root() {
+function Menu() {
   useEffect(() => {
     document.title = "Sudoku"; // Set title of page
   }, []);
@@ -11,6 +11,7 @@ function Root() {
   const [showModal, setShowModal] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [boardSize, setBoardSize] = useState("");
+  const [difficulty, setActiveDifficulty] = useState("");
 
   function handleClick() {
     const size = parseInt(boardSize, 10);
@@ -30,14 +31,17 @@ function Root() {
   }
   function handleEasyClick() {
     localStorage.setItem("difficulty", "Easy");
+    setActiveDifficulty("Easy");
   }
 
   function handleMedClick() {
     localStorage.setItem("difficulty", "Medium");
+    setActiveDifficulty("Medium");
   }
 
   function handleHardClick() {
     localStorage.setItem("difficulty", "Hard");
+    setActiveDifficulty("Hard");
   }
 
   const handleBoardSize = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -93,22 +97,30 @@ function Root() {
               <option value={9}> 9</option>
               <option value={16}> 16</option>
               <option value={25}> 25</option>
-              <option value={36}> 36</option>
-              <option value={49}> 49</option>
-              <option value={64}> 64</option>
             </select>
           </form>
         </div>
       )}
       <div className="buttons-container">
         <div className="difficulty-buttons">
-          <button onClick={handleEasyClick} className="easy-button">
+          <button
+            onClick={handleEasyClick}
+            className={`easy-button ${difficulty === "Easy" ? "active" : ""}`}
+          >
             Easy
           </button>
-          <button onClick={handleMedClick} className="medium-button">
+          <button
+            onClick={handleMedClick}
+            className={`medium-button ${
+              difficulty === "Medium" ? "active" : ""
+            }`}
+          >
             Medium
           </button>
-          <button onClick={handleHardClick} className="hard-button">
+          <button
+            onClick={handleHardClick}
+            className={`hard-button ${difficulty === "Hard" ? "active" : ""}`}
+          >
             Hard
           </button>
         </div>
@@ -120,4 +132,4 @@ function Root() {
   );
 }
 
-export default Root;
+export default Menu;
