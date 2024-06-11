@@ -2,6 +2,7 @@
 TODOS:
 Upgrade the EliminationSolver by: 
 - First find cells with (8) cells filled in a row, col or box and put in the missing number
+- When checking rows, cols and boxes for (8/9) filled -> if two empty are found move on to next row, col or box
 */
 
 import { getBoardSize } from "../MVC/Model/sudokuGenerator";
@@ -35,6 +36,57 @@ export function eliminateSudoku(board: boardType): boardType | null {
 
   // Make a copy of the board (Found online. Reformat later when input is proberly formatted.)
   const solvedBoard = JSON.parse(JSON.stringify(board));
+
+  let arrMissing = new Array(boardSize);
+  let numOfMissing = 0;
+  let missingIndex = -1; // Place of the missing number
+
+
+  // Check col for single missing
+  for (let i = 0; i < boardSize; i++) {
+    missingIndex = -1;
+    numOfMissing = 0;
+
+    for (let j = 0; j < boardSize; j++){
+        arrMissing[j] = solvedBoard[i][j]
+
+        if (solvedBoard[i][j] == -1) {
+            missingIndex = j;
+            numOfMissing++
+
+            if (numOfMissing >= 2) {
+                break;
+            }
+        }
+    }
+    if (numOfMissing == 1 && missingIndex != -1) {
+        let colMissingNumber = findMissingNum(arrMissing);
+        solvedBoard[i][missingIndex] = colMissingNumber;
+    }
+  }
+
+  // Check row for single missing
+  for (let i = 0; i < boardSize; i++) {
+    missingIndex = -1;
+    numOfMissing = 0;
+
+    for (let j = 0; j < boardSize; j++){
+        arrMissing[j] = solvedBoard[j][i]
+
+        if (solvedBoard[j][i] == -1) {
+            missingIndex = j;
+            numOfMissing++
+
+            if (numOfMissing >= 2) {
+                break;
+            }
+        }
+    }
+    if (numOfMissing == 1 && missingIndex != -1) {
+        let rowMissingNumber = findMissingNum(arrMissing);
+        solvedBoard[missingIndex][i] = rowMissingNumber;
+    }
+  }
 
   const isValidPlacement = (row: number, col: number, num: number) => {
     // Given the coordinates, check rows and coloumns if a given number is valid to be placed.
