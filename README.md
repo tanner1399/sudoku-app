@@ -75,3 +75,13 @@ export default {
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+Set up of test environment:
+
+Step 1 - Install vitest:
+npm install vitest --save-dev
+
+Step 2 - Install React testing library:
+npm install --save-dev @testing-library/jest-dom @testing-library/react @testing-library/user-event
+
+To run the test, type 'npm run test' in the terminal
