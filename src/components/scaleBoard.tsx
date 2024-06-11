@@ -74,7 +74,7 @@ function ScaleBoard() {
   }, []);
 
   useEffect(() => {
-    let intervalId: number | null = null;
+    let intervalId: NodeJS.Timeout | null = null;
 
     if (!isPaused && !isFinished) {
       intervalId = setInterval(() => {
