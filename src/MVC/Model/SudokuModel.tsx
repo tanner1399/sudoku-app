@@ -4,7 +4,7 @@ import {
   getBoardSize,
   generateFullSudokuBoard,
 } from "./sudokuGenerator";
-import { eliminateSudoku } from "../../game_logic/EliminationSolver";
+import { eliminateSudoku } from "../../game_logic/EliminationSolver2";
 
 export const useSudokuModel = () => {
   const [createdBoard, setCreatedBoard] = useState<number[][]>([]);
