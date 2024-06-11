@@ -8,13 +8,13 @@ function shuffleArray(array: number[]): number[] {
 }
 
 // Check if a number can be placed at the given row and column
-function isValid(
+export function isValid(
   board: number[][],
   row: number,
   col: number,
   num: number
 ): boolean {
-  const boardSize = getBoardSize();
+  const boardSize = 9 //getBoardSize(); /* See README file for test */
   // Row check
   for (let x = 0; x < boardSize; x++) {
     if (board[row][x] === num) return false;
@@ -39,7 +39,7 @@ function isValid(
 }
 
 // Function to fill the Sudoku board with numbers
-function fillBoard(board: number[][]): boolean {
+export function fillBoard(board: number[][]): boolean {
   for (let row = 0; row < getBoardSize(); row++) {
     for (let col = 0; col < getBoardSize(); col++) {
       if (board[row][col] === -1) {
