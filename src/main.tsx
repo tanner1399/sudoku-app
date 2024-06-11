@@ -3,12 +3,12 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Root from "./routes/home.tsx";
-import ScaleBoard from "./components/scaleBoard.tsx";
+import BoardController from "./MVC/Controller/SudokuController.tsx";
 
 const router = createBrowserRouter([
   {
     path: "Game",
-    element: <ScaleBoard />,
+    element: <BoardController />,
   },
   {
     path: "/",
