@@ -57,6 +57,10 @@ body {
     font-size: large;
     font-weight: bold;
 }
+.easy-button.active, .medium-button.active, .hard-button.active {
+    color: white;
+
+}
 
 .modal input {
     width: 100%;

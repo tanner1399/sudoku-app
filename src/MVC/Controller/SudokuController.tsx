@@ -104,7 +104,11 @@ const BoardController: React.FC = () => {
   };
 
   const giveHint = () => {
-    if (givenHint === false) {
+    if (givenHint === true) {
+      alert("You have already used your hint!");
+    } else if (
+      confirm("You only have 1 hint per game. Are you sure you want to use it?")
+    ) {
       const emptyCells: { row: number; col: number }[] = [];
 
       createdBoard.forEach((row, rowIndex) => {
@@ -123,8 +127,6 @@ const BoardController: React.FC = () => {
         setCreatedBoard(newBoard);
         setGivenHint(true);
       }
-    } else {
-      alert("You have already used a hint!");
     }
   };
 
