@@ -12,22 +12,13 @@ type boardType = number[][];
 
 // Given an array of numbers (the numbers in a col, row or box) find what numbers are missing from that element.
 // If there is only one missing number -> return that missing number
-function findMissingNum(foundNums: Number[]) {
-  const boardSize = getBoardSize();
-  // TODO: Can the initialisation of allNumbers be moved to only run once?
-  const allNumbers = new Array(boardSize);
-  for (let i = 1; i <= boardSize; i++) {
-    allNumbers[i] = i;
-  }
-
+function findMissingNum(foundNums: Number[], allNumbers: Number[]) {
   // Match allNumbers[] and foundNums[]
   let missing = allNumbers.filter((item) => foundNums.indexOf(item) < 0);
   if ((missing.length = 1)) {
     return missing[0];
   }
 }
-
-// Merge the two functions elimSudoku and findMissing
 
 export function eliminateSudoku(board: boardType): boardType | null {
   const boardSize = getBoardSize();
@@ -37,9 +28,11 @@ export function eliminateSudoku(board: boardType): boardType | null {
   // Make a copy of the board (Found online. Reformat later when input is proberly formatted.)
   const solvedBoard = JSON.parse(JSON.stringify(board));
 
+  // variables used for filling in single missing cells
   let arrMissing = new Array(boardSize);
   let numOfMissing = 0;
   let missingIndex = -1; // Place of the missing number
+  const allNumbers = Array.from({ length: boardSize }, (_, i) => i + 1);
 
 
   // Check col for single missing
@@ -60,7 +53,7 @@ export function eliminateSudoku(board: boardType): boardType | null {
         }
     }
     if (numOfMissing == 1 && missingIndex != -1) {
-        let colMissingNumber = findMissingNum(arrMissing);
+        let colMissingNumber = findMissingNum(arrMissing, allNumbers);
         solvedBoard[i][missingIndex] = colMissingNumber;
     }
   }
@@ -83,7 +76,7 @@ export function eliminateSudoku(board: boardType): boardType | null {
         }
     }
     if (numOfMissing == 1 && missingIndex != -1) {
-        let rowMissingNumber = findMissingNum(arrMissing);
+        let rowMissingNumber = findMissingNum(arrMissing, allNumbers);
         solvedBoard[missingIndex][i] = rowMissingNumber;
     }
   }
