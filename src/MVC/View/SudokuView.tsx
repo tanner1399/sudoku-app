@@ -136,6 +136,9 @@ const SudokuBoardView: React.FC<SudokuViewProps> = ({
             <button onClick={giveHint} className="hint">
               Hint
             </button>
+            <button onClick={navigateHome} className="menu">
+              Menu
+            </button>
           </div>
         )}
         {isFinished && (
