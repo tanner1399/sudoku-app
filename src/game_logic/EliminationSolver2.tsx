@@ -1,8 +1,7 @@
 /* 
 TODOS:
 Upgrade the EliminationSolver by: 
-- First find cells with (8) cells filled in a row, col or box and put in the missing number
-- When checking rows, cols and boxes for (8/9) filled -> if two empty are found move on to next row, col or box
+- Change -1 to emptyCell
 */
 
 import { getBoardSize } from "../MVC/Model/sudokuGenerator";
