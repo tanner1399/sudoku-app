@@ -1,4 +1,4 @@
-// tests/sudokuGenerator.test.ts
+// tests/sudokuGenerator.test.tsx
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import {
   isValid,
