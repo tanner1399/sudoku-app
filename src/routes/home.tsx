@@ -49,6 +49,10 @@ function Menu() {
     setBoardSize(size);
   };
 
+  function toBuildYourOwnPage() {
+    navigate("/buildYourOwn");
+  }
+
   function validateUsername(username: string) {
     if (username.length > 20) {
       alert("Username cannot be longer than 20 charecters or empty");
@@ -127,6 +131,7 @@ function Menu() {
         <button className="start-button" type="button" onClick={handleClick}>
           Start Game
         </button>
+        <button onClick={toBuildYourOwnPage}>Build your own</button>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import BoardController from "./MVC/Controller/SudokuController.tsx";
 import Menu from "./routes/home.tsx";
+import YourSudoku from "./routes/yourSudoku.tsx";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Menu />,
+  },
+  {
+    path: "buildYourOwn",
+    element: <YourSudoku />,
   },
 ]);
 
