@@ -30,6 +30,7 @@ const BoardController: React.FC = () => {
 
   const navigate = useNavigate();
 
+  // Function to handle the user input in the cell
   const handleCellChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     row: number,
@@ -41,6 +42,7 @@ const BoardController: React.FC = () => {
     setCreatedBoard(newBoard);
   };
 
+  // Function to handle and check the user input after the cell has ben exited
   const handleCellBlur = (
     event: React.FocusEvent<HTMLInputElement>,
     row: number,
@@ -103,6 +105,7 @@ const BoardController: React.FC = () => {
     }
   };
 
+  // Function to insert a random number in the Sudoku grid
   const giveHint = () => {
     if (givenHint === true) {
       alert("You have already used your hint!");
@@ -134,6 +137,7 @@ const BoardController: React.FC = () => {
     setShowPopup(false);
   };
 
+  // useEffect hook to create a correct board size
   useEffect(() => {
     const boardSize = parseInt(localStorage.getItem("boardSize")!, 10);
     if (!isNaN(boardSize) && boardSize > 0 && Math.sqrt(boardSize) % 1 === 0) {
@@ -143,6 +147,7 @@ const BoardController: React.FC = () => {
     }
   }, []);
 
+  // Function for timer to count up.
   useEffect(() => {
     let intervalId: NodeJS.Timeout | null = null;
 

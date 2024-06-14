@@ -61,17 +61,18 @@ const SudokuBoardView: React.FC<SudokuViewProps> = ({
             <Timer elapsedTime={elapsedTime} />
           </div>
         )}
-        {!isPaused && !isFinished && (
-          <button onClick={handlePauseClick} className="pause-button">
-            Pause
-          </button>
-        )}
+        {!isPaused &&
+          !isFinished && ( // Buttons for pausing and unpausing
+            <button onClick={handlePauseClick} className="pause-button">
+              Pause
+            </button>
+          )}
         {isPaused && (
           <button onClick={handleUnpauseClick} className="pause-button">
             Unpause
           </button>
         )}
-        {isPaused && (
+        {isPaused && ( // Bluring the game, so the user cannot cheat during pause
           <div className="blur-container">
             <p className="pause-text">Game is paused!</p>
           </div>
@@ -80,7 +81,7 @@ const SudokuBoardView: React.FC<SudokuViewProps> = ({
           <table>
             <tbody className="board-container">
               {createdBoard.map((row, rowIndex) => (
-                <tr
+                <tr // Mapping the entire grid out. Adding the correct subgrids
                   key={rowIndex}
                   className={
                     (rowIndex + 1) % Math.sqrt(boardSize) === 0 ? "bBorder" : ""
@@ -95,7 +96,7 @@ const SudokuBoardView: React.FC<SudokuViewProps> = ({
                           : ""
                       }
                     >
-                      <input
+                      <input // Handles input in the cell and disables the cell if the correct number has been inputted
                         onChange={(e) =>
                           handleCellChange(e, rowIndex, colIndex)
                         }
@@ -121,27 +122,29 @@ const SudokuBoardView: React.FC<SudokuViewProps> = ({
             </tbody>
           </table>
         )}
-        {!isFinished && createdBoard && !isPaused && (
-          <div className="buttonContainer">
-            <div className="mistakeCounter">
-              Your remaining lives: {lifeCounter}
-              <FontAwesomeIcon icon={faHeart} />
+        {!isFinished &&
+          createdBoard &&
+          !isPaused && ( // Buttons for different kinds of choices during game
+            <div className="buttonContainer">
+              <div className="mistakeCounter">
+                Your remaining lives: {lifeCounter}
+                <FontAwesomeIcon icon={faHeart} />
+              </div>
+              <button onClick={solveSudoku} className="solveButton">
+                Solve
+              </button>
+              <button onClick={createBoards} className="newGame">
+                New Game
+              </button>
+              <button onClick={giveHint} className="hint">
+                Hint
+              </button>
+              <button onClick={navigateHome} className="menu">
+                Menu
+              </button>
             </div>
-            <button onClick={solveSudoku} className="solveButton">
-              Solve
-            </button>
-            <button onClick={createBoards} className="newGame">
-              New Game
-            </button>
-            <button onClick={giveHint} className="hint">
-              Hint
-            </button>
-            <button onClick={navigateHome} className="menu">
-              Menu
-            </button>
-          </div>
-        )}
-        {isFinished && (
+          )}
+        {isFinished && ( // Large menu box to guide the users next choice
           <div className="finishedBox">
             Well done! You completed the Sudoku puzzle!
             <div>
@@ -157,7 +160,7 @@ const SudokuBoardView: React.FC<SudokuViewProps> = ({
             </div>
           </div>
         )}
-        {showPopup && (
+        {showPopup && ( // Pop up menu if the Sudoku is not solvable
           <div className="popup">
             <div className="popup-content">
               <p>No solution exists for the Sudoku puzzle.</p>

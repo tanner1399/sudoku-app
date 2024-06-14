@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function Menu() {
   useEffect(() => {
-    document.title = "Sudoku"; // Set title of page
+    document.title = "Sudoku";
   }, []);
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
@@ -13,6 +13,7 @@ function Menu() {
   const [boardSize, setBoardSize] = useState("");
   const [difficulty, setActiveDifficulty] = useState("");
 
+  // Function to handle the start game click
   function handleClick() {
     const size = parseInt(boardSize, 10);
     if (!isNaN(size) && size > 0 && Math.sqrt(size) % 1 === 0) {
@@ -23,12 +24,14 @@ function Menu() {
     }
   }
 
+  // Function to handle and validate user login
   function handleLogin() {
     if (validateUsername(username)) {
       setShowModal(false);
       setIsLoggedIn(true);
     }
   }
+  // Functions to handle the choice of difficulty
   function handleEasyClick() {
     localStorage.setItem("difficulty", "Easy");
     setActiveDifficulty("Easy");
@@ -44,6 +47,7 @@ function Menu() {
     setActiveDifficulty("Hard");
   }
 
+  // Handles the input board size
   const handleBoardSize = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const size = event.target.value;
     setBoardSize(size);
@@ -53,6 +57,7 @@ function Menu() {
     navigate("/buildYourOwn");
   }
 
+  // Function to validate the chosen username
   function validateUsername(username: string) {
     if (username.length > 20) {
       alert("Username cannot be longer than 20 charecters or empty");
@@ -73,7 +78,7 @@ function Menu() {
       <header className="Title">Sudoku</header>
       {showModal && (
         <div className="modal">
-          <input
+          <input // Input field for the username
             type="text"
             placeholder="Enter your username"
             value={username}
@@ -89,7 +94,7 @@ function Menu() {
             Please select a board size & difficulty
           </p>
           <form>
-            <select
+            <select // Board size option menu
               className="sizeSelector"
               value={boardSize}
               onChange={handleBoardSize}

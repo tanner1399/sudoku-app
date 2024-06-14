@@ -20,6 +20,7 @@ export const useSudokuModel = () => {
 
   const boardSize = getBoardSize();
 
+  // Const to generate all the relevant boards and setting all the states to default value
   const createBoards = () => {
     setElapsedTime(0);
     setResetOnce(false);
@@ -33,6 +34,7 @@ export const useSudokuModel = () => {
     setResetBoard(copyOfEditedBoard);
   };
 
+  // Const to sovle the Sudoku
   const solveSudoku = () => {
     const solvedElimBoard = eliminateSudoku(createdBoard);
     if (solvedElimBoard !== null) {
