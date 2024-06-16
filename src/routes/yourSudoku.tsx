@@ -1,53 +1,60 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SudokuView from "../MVC/View/YourSudokuView";
-
-// TODO: Remove from HERE
-type boardType = number[][];
-const testBoard: boardType = [
-  [4, 2, 7, -1, -1, -1, -1, 5, 8],
-  [1, 8, -1, 5, 7, -1, 4, -1, 6],
-  [3, 6, 5, 1, -1, 4, 9, 7, 2],
-  [-1, -1, 4, 2, -1, -1, 6, 8, 5],
-  [7, -1, 6, 8, -1, 5, 2, -1, 9],
-  [2, 5, -1, 9, 6, 1, -1, -1, -1],
-  [-1, 9, 2, -1, 1, -1, -1, -1, 4],
-  [6, -1, -1, 4, -1, 9, -1, 2, 3],
-  [8, 4, 3, 7, 2, -1, 5, 6, 1],
-];
-const emptyBoard = [...Array(9)].map(e => Array(9));
-// to HERE
-
-
-// TODO: Move this to a YourSudokuController
-const handleCellChange = (
-  event: React.ChangeEvent<HTMLInputElement>,
-  row: number,
-  col: number
-) => {
-  const inputValue = parseInt(event.target.value, 10) || -1;
-  const newBoard = [...emptyBoard];
-  newBoard[row][col] = inputValue;
-};
-
 
 function YourSudoku() {
+  const [yourBoardSize, setYourBoardSize] = useState(0);
+  const [board, setBoard] = useState([]);
   const navigate = useNavigate();
+
+  function handleBoardSizeChange(event) { 
+    setYourBoardSize(parseInt(event.target.value));
+  }
+
+  function createBoard() {
+    const newBoard = Array.from({ length: yourBoardSize }, () =>
+      Array.from({ length: yourBoardSize }, () => -1)
+    );
+    setBoard(newBoard);
+  }
 
   const navigateHome = () => {
     navigate("/");
   };
+
   return (
     <div>
       <header> Build your own Sudoku</header>
-        <SudokuView
-        emptyBoard={testBoard}
-        yourBoard={testBoard}
-        boardSize={9}
-        handleCellChange={handleCellChange}
-      />
+      <div>
+        <label htmlFor="boardSize">Select board size: </label>
+        <select id="boardSize" value={yourBoardSize} onChange={handleBoardSizeChange}>
+          <option value={0} disabled>Select size</option>
+          <option value={4}>4</option>
+          <option value={9}>9</option>
+          <option value={16}>16</option>
+        </select>
+      </div>
+      <button onClick={createBoard} disabled={yourBoardSize === 0}>Create</button>
       <button onClick={navigateHome}>Menu</button>
+
+      {board.length > 0 && (
+        <div>
+          <h2>Your Sudoku Board:</h2>
+          <table>
+            <tbody>
+              {board.map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                  {row.map((cell, cellIndex) => (
+                    <td key={cellIndex}>{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 }
 
 export default YourSudoku;
+
