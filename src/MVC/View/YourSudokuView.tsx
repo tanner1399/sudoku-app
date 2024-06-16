@@ -5,6 +5,7 @@ interface YourSudokuViewProps {
     emptyBoard: number[][];
     yourBoard: number[][];
     boardSize: number;
+    locked: boolean;
     handleCellChange: (
         event: React.ChangeEvent<HTMLInputElement>,
         row: number,
@@ -16,6 +17,7 @@ const YourSudokuView: React.FC<YourSudokuViewProps> = ({
     emptyBoard, 
     yourBoard, 
     boardSize,
+    locked,
     handleCellChange,
 }) => {
     return (
@@ -43,10 +45,7 @@ const YourSudokuView: React.FC<YourSudokuViewProps> = ({
                           handleCellChange(e, rowIndex, colIndex)
                         }
                         disabled={
-                          emptyBoard[rowIndex][colIndex] ===
-                          yourBoard[rowIndex][colIndex]
-                            ? true
-                            : false
+                          locked === true
                         }
                       />
                     </td>
@@ -55,6 +54,9 @@ const YourSudokuView: React.FC<YourSudokuViewProps> = ({
               ))}
                 </tbody>
             </table>
+            <button onClick={locked = true} className="lock-sudoku">
+            Lock sudoku
+          </button>
         </div>
     );
 };

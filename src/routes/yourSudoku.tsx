@@ -14,7 +14,9 @@ const testBoard: boardType = [
   [6, -1, -1, 4, -1, 9, -1, 2, 3],
   [8, 4, 3, 7, 2, -1, 5, 6, 1],
 ];
-const emptyBoard = [...Array(9)].map(e => Array(9));
+let emptyBoard: boardType = [...Array(9)].map(e => Array(9));
+emptyBoard = Array.prototype.fill(-1);
+
 // to HERE
 
 
@@ -43,6 +45,7 @@ function YourSudoku() {
         emptyBoard={testBoard}
         yourBoard={testBoard}
         boardSize={9}
+        locked={false}
         handleCellChange={handleCellChange}
       />
       <button onClick={navigateHome}>Menu</button>
