@@ -42,7 +42,11 @@ function YourSudoku() {
           <table>
             <tbody>
               {board.map((row, rowIndex) => ( 
-                <tr key={rowIndex}>
+                <tr key={rowIndex}
+                className={
+                  (rowIndex + 1) % Math.sqrt(yourBoardSize) === 0 ? "bBorder" : ""
+                }
+              >
                   {row.map((cell, cellIndex) => (
                     <td key={cellIndex} 
                     className="cellInput"
