@@ -31,6 +31,7 @@ function YourSudoku() {
           <option value={4}>4x4</option>
           <option value={9}>9x9</option>
           <option value={16}>16x16</option>
+          <option value={25}>25x25</option>
         </select>
       </div>
       <button onClick={createBoard} disabled={yourBoardSize === 0}>Create</button>
