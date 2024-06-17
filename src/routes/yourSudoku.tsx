@@ -28,9 +28,9 @@ function YourSudoku() {
         <label htmlFor="boardSize">Select board size: </label>
         <select id="boardSize" value={yourBoardSize} onChange={handleBoardSizeChange}>
           <option value={0} disabled>Select size</option>
-          <option value={4}>4</option>
-          <option value={9}>9</option>
-          <option value={16}>16</option>
+          <option value={4}>4x4</option>
+          <option value={9}>9x9</option>
+          <option value={16}>16x16</option>
         </select>
       </div>
       <button onClick={createBoard} disabled={yourBoardSize === 0}>Create</button>
@@ -41,10 +41,12 @@ function YourSudoku() {
           <h2>Your Sudoku Board:</h2>
           <table>
             <tbody>
-              {board.map((row, rowIndex) => (
+              {board.map((row, rowIndex) => ( 
                 <tr key={rowIndex}>
                   {row.map((cell, cellIndex) => (
-                    <td key={cellIndex}>{cell}</td>
+                    <td key={cellIndex} 
+                    className="cellInput"
+                    >{cell}</td>
                   ))}
                 </tr>
               ))}
