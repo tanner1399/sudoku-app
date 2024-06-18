@@ -1,13 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import BoardController from "./MVC/Controller/SudokuController";
-import Menu from "./routes/home";
+import MenuController from "./MVC/Controller/HomeController.tsx";
 import YourSudoku from "./routes/yourSudoku";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Menu />} />
+        <Route path="/" element={<MenuController />} />
         <Route path="/" element={<BoardController />} />
         <Route path="/" element={<YourSudoku />} />
       </Routes>

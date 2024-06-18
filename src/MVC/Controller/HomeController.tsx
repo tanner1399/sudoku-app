@@ -6,7 +6,7 @@ import {
   saveBoardSize,
   saveDifficulty,
 } from "../Model/HomeModel";
-import "../styles/home.css";
+import "../View/home.css";
 
 const MenuController: React.FC = () => {
   useEffect(() => {
