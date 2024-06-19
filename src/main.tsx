@@ -6,7 +6,6 @@ import BoardController from "./mvc/controller/sudoku_controller.tsx";
 import MenuController from "./mvc/controller/home_controller.tsx";
 import YourSudoku from "./routes/yourSudoku.tsx";
 
-
 const router = createBrowserRouter([
   {
     path: "Game",
