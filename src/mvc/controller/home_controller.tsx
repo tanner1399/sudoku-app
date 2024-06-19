@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import MenuView from "../View/HomeView";
+import MenuView from "../view/home_view";
 import {
   validateUsername,
   saveBoardSize,
   saveDifficulty,
-} from "../Model/HomeModel";
-import "../View/home.css";
+} from "../model/home_model";
+import "../view/home.css";
 
 const MenuController: React.FC = () => {
   useEffect(() => {

@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import BoardController from "./MVC/Controller/SudokuController";
-import MenuController from "./MVC/Controller/HomeController.tsx";
+import BoardController from "./mvc/controller/sudoku_controller";
+import MenuController from "./mvc/controller/home_controller";
 import YourSudoku from "./routes/yourSudoku";
 
 function App() {

@@ -3,7 +3,7 @@ import {
   generateSudokuBoard,
   getBoardSize,
   generateFullSudokuBoard,
-} from "./sudokuGenerator";
+} from "./sudoku_generator.tsx";
 import { eliminateSudoku } from "../../game_logic/EliminationSolver2";
 
 export const useSudokuModel = () => {
@@ -36,11 +36,9 @@ export const useSudokuModel = () => {
 
   // Const to sovle the Sudoku
   const solveSudoku = () => {
-
     const generationTimes = [];
-    const startTime = performance.now(); 
+    const startTime = performance.now();
 
-    
     const solvedElimBoard = eliminateSudoku(createdBoard);
 
     const endtime = performance.now();
@@ -49,11 +47,11 @@ export const useSudokuModel = () => {
       boardSize: getBoardSize(),
       time: endtime - startTime,
     });
-  
+
     generationTimes.forEach((entry) => {
       console.log(`${entry.boardSize}\t${entry.time}`);
     });
-  
+
     if (solvedElimBoard !== null) {
       setCreatedBoard(solvedElimBoard);
     } else {

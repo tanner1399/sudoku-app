@@ -4,7 +4,7 @@ Upgrade the EliminationSolver by:
 - Change -1 to emptyCell
 */
 
-import { getBoardSize } from "../MVC/Model/sudokuGenerator";
+import { getBoardSize } from "../mvc/model/sudoku_generator";
 
 // Temp values:
 type boardType = number[][];
@@ -33,27 +33,26 @@ export function eliminateSudoku(board: boardType): boardType | null {
   let missingIndex = -1; // Place of the missing number
   const allNumbers = Array.from({ length: boardSize }, (_, i) => i + 1);
 
-
   // Check col for single missing
   for (let i = 0; i < boardSize; i++) {
     missingIndex = -1;
     numOfMissing = 0;
 
-    for (let j = 0; j < boardSize; j++){
-        arrMissing[j] = solvedBoard[i][j]
+    for (let j = 0; j < boardSize; j++) {
+      arrMissing[j] = solvedBoard[i][j];
 
-        if (solvedBoard[i][j] == -1) {
-            missingIndex = j;
-            numOfMissing++
+      if (solvedBoard[i][j] == -1) {
+        missingIndex = j;
+        numOfMissing++;
 
-            if (numOfMissing >= 2) {
-                break;
-            }
+        if (numOfMissing >= 2) {
+          break;
         }
+      }
     }
     if (numOfMissing == 1 && missingIndex != -1) {
-        let colMissingNumber = findMissingNum(arrMissing, allNumbers);
-        solvedBoard[i][missingIndex] = colMissingNumber;
+      let colMissingNumber = findMissingNum(arrMissing, allNumbers);
+      solvedBoard[i][missingIndex] = colMissingNumber;
     }
   }
 
@@ -62,21 +61,21 @@ export function eliminateSudoku(board: boardType): boardType | null {
     missingIndex = -1;
     numOfMissing = 0;
 
-    for (let j = 0; j < boardSize; j++){
-        arrMissing[j] = solvedBoard[j][i]
+    for (let j = 0; j < boardSize; j++) {
+      arrMissing[j] = solvedBoard[j][i];
 
-        if (solvedBoard[j][i] == -1) {
-            missingIndex = j;
-            numOfMissing++
+      if (solvedBoard[j][i] == -1) {
+        missingIndex = j;
+        numOfMissing++;
 
-            if (numOfMissing >= 2) {
-                break;
-            }
+        if (numOfMissing >= 2) {
+          break;
         }
+      }
     }
     if (numOfMissing == 1 && missingIndex != -1) {
-        let rowMissingNumber = findMissingNum(arrMissing, allNumbers);
-        solvedBoard[missingIndex][i] = rowMissingNumber;
+      let rowMissingNumber = findMissingNum(arrMissing, allNumbers);
+      solvedBoard[missingIndex][i] = rowMissingNumber;
     }
   }
 

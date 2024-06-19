@@ -6,7 +6,7 @@ function YourSudoku() {
   const [board, setBoard] = useState([]);
   const navigate = useNavigate();
 
-  function handleBoardSizeChange(event) { 
+  function handleBoardSizeChange(event) {
     setYourBoardSize(parseInt(event.target.value));
   }
 
@@ -26,15 +26,23 @@ function YourSudoku() {
       <header> Build your own Sudoku</header>
       <div>
         <label htmlFor="boardSize">Select board size: </label>
-        <select id="boardSize" value={yourBoardSize} onChange={handleBoardSizeChange}>
-          <option value={0} disabled>Select size</option>
+        <select
+          id="boardSize"
+          value={yourBoardSize}
+          onChange={handleBoardSizeChange}
+        >
+          <option value={0} disabled>
+            Select size
+          </option>
           <option value={4}>4x4</option>
           <option value={9}>9x9</option>
           <option value={16}>16x16</option>
           <option value={25}>25x25</option>
         </select>
       </div>
-      <button onClick={createBoard} disabled={yourBoardSize === 0}>Create</button>
+      <button onClick={createBoard} disabled={yourBoardSize === 0}>
+        Create
+      </button>
       <button onClick={navigateHome}>Menu</button>
 
       {board.length > 0 && (
@@ -42,16 +50,19 @@ function YourSudoku() {
           <h2>Your Sudoku Board:</h2>
           <table>
             <tbody>
-              {board.map((row, rowIndex) => ( 
-                <tr key={rowIndex}
-                className={
-                  (rowIndex + 1) % Math.sqrt(yourBoardSize) === 0 ? "bBorder" : ""
-                }
-              >
+              {board.map((row, rowIndex) => (
+                <tr
+                  key={rowIndex}
+                  className={
+                    (rowIndex + 1) % Math.sqrt(yourBoardSize) === 0
+                      ? "bBorder"
+                      : ""
+                  }
+                >
                   {row.map((cell, cellIndex) => (
-                    <td key={cellIndex} 
-                    className="cellInput"
-                    >{cell}</td>
+                    <td key={cellIndex} className="cellInput">
+                      {cell}
+                    </td>
                   ))}
                 </tr>
               ))}
@@ -64,4 +75,3 @@ function YourSudoku() {
 }
 
 export default YourSudoku;
-
