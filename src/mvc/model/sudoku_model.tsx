@@ -3,8 +3,8 @@ import {
   generateSudokuBoard,
   getBoardSize,
   generateFullSudokuBoard,
-} from "./sudoku_generator.tsx";
-import { eliminateSudoku } from "../../game_logic/EliminationSolver2";
+} from "./sudoku_generator";
+import { eliminateSudoku } from "../../game_logic/EliminationSolver2.tsx";
 
 export const useSudokuModel = () => {
   const [createdBoard, setCreatedBoard] = useState<number[][]>([]);

@@ -4,7 +4,7 @@ Upgrade the EliminationSolver by:
 - Change -1 to emptyCell
 */
 
-import { getBoardSize } from "../mvc/model/sudoku_generator";
+import { getBoardSize } from "../MVC/model/sudoku_generator";
 
 // Temp values:
 type boardType = number[][];
