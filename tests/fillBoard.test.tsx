@@ -5,28 +5,27 @@ import {
   fillBoard,
   generateSudokuBoard,
   getBoardSize,
-} from "../src/MVC/Model/sudokuGenerator";
+} from "../src/mvc/Model/sudokuGenerator";
 
-
-vi.mock("../src/MVC/Model/sudokuGenerator", async (importOriginal) => {
+vi.mock("../src/mvc/Model/sudokuGenerator", async (importOriginal) => {
   const actual = await importOriginal();
   return {
     ...actual, // Spread all actual implementations
-    getBoardSize: vi.fn(() => 9), 
-    isValid: vi.fn(() => true), 
+    getBoardSize: vi.fn(() => 9),
+    isValid: vi.fn(() => true),
   };
-}); 
+});
 
 describe("fillBoard Function", () => {
-    beforeEach(() => {
-      // Set up specific behaviors for `isValid` for each test, or reset mocks
-      vi.mocked(isValid).mockImplementation((board, row, col, num) => true); // Assume all placements are valid
-    });
+  beforeEach(() => {
+    // Set up specific behaviors for `isValid` for each test, or reset mocks
+    vi.mocked(isValid).mockImplementation((board, row, col, num) => true); // Assume all placements are valid
+  });
 
-    afterEach(() => {
-      // Reset the mocks after each test to prevent interference
-      vi.resetAllMocks();
-    });
+  afterEach(() => {
+    // Reset the mocks after each test to prevent interference
+    vi.resetAllMocks();
+  });
 
   it("should successfully fill the board", () => {
     vi.mocked(isValid).mockImplementation((board, row, col, num) => true); //All placements are valid

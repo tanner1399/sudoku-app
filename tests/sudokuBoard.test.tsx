@@ -5,7 +5,7 @@ import {
   fillBoard,
   generateSudokuBoard,
   getBoardSize,
-} from "../src/MVC/Model/sudokuGenerator";
+} from "../src/mvc/Model/sudokuGenerator";
 //Test isValid function:
 describe("isValid Function", () => {
   const board = [

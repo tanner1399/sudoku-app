@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import BoardView from "../view/sudoku_view";
+import SudokuBoardView from "../view/sudoku_view";
 import { useSudokuModel } from "../model/sudoku_model";
 
 const BoardController: React.FC = () => {
@@ -163,7 +163,7 @@ const BoardController: React.FC = () => {
   }, [isPaused]);
 
   return (
-    <BoardView
+    <SudokuBoardView
       createdBoard={createdBoard}
       originalBoard={originalBoard}
       lifeCounter={lifeCounter}

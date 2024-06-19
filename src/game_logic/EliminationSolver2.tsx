@@ -1,4 +1,4 @@
-import { getBoardSize } from "../MVC/model/sudoku_generator";
+import { getBoardSize } from "../mvc/model/sudoku_generator";
 
 // Temp values:
 type boardType = number[][];
@@ -98,8 +98,8 @@ export function eliminateSudoku(board: boardType): boardType | null {
   const solve = () => {
     for (let row = 0; row < boardSize; row++) {
       for (let col = 0; col < boardSize; col++) {
-
-        if (solvedBoard[row][col] === emptyCell) { // Tries numbers from 1 to boardSize and checks if they can be placed
+        if (solvedBoard[row][col] === emptyCell) {
+          // Tries numbers from 1 to boardSize and checks if they can be placed
           for (let num = 1; num <= boardSize; num++) {
             if (isValidPlacement(row, col, num)) {
               solvedBoard[row][col] = num;
