@@ -18,7 +18,7 @@ const router = createBrowserRouter([
   {
     path: "/buildYourOwn",
     element: <YourSudoku />,
-  },
+  }, //hey
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
