@@ -14,7 +14,10 @@ export function isValid(
   col: number,
   num: number
 ): boolean {
-  const boardSize = getBoardSize(); //9 /* See README file for test */
+  // /* See README file for test */
+  const boardSize = getBoardSize(); // TODO: Remove this line of code for tests
+  //const boardSize = 9 //TODO: Use this line of code for tests
+
   // Row check
   for (let x = 0; x < boardSize; x++) {
     if (board[row][x] === num) return false;
