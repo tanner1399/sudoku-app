@@ -8,7 +8,7 @@ export function eliminateSudoku(board: boardType): boardType | null {
   const boxSize = Math.sqrt(boardSize);
   const emptyCell = -1;
 
-  // Make a copy of the board (Found online. Reformat later when input is proberly formatted.)
+  // Create a deep copy of the board
   const solvedBoard = JSON.parse(JSON.stringify(board));
 
   const isValidPlacement = (row: number, col: number, num: number) => {
@@ -19,8 +19,7 @@ export function eliminateSudoku(board: boardType): boardType | null {
       }
     }
 
-    // Checks the same in the 3*3 box
-    // TODO: Reformat to fit different sizes
+    // Checks the same in the boxes
     const startRow = Math.floor(row / boxSize) * boxSize;
     const startCol = Math.floor(col / boxSize) * boxSize;
     for (let i = 0; i < boxSize; i++) {
@@ -34,12 +33,12 @@ export function eliminateSudoku(board: boardType): boardType | null {
     return true;
   };
 
-  // TODO: Make this less nested ~_~
   const solve = () => {
-    for (let row = 0; row < boardSize; row++) {
+    for (let row = 0; row < boardSize; row++) { 
       for (let col = 0; col < boardSize; col++) {
+
         if (solvedBoard[row][col] === emptyCell) {
-          for (let num = 1; num <= boardSize; num++) {
+          for (let num = 1; num <= boardSize; num++) { // Tries numbers from 1 to boardSize and checks if they can be placed
             if (isValidPlacement(row, col, num)) {
               solvedBoard[row][col] = num;
 
@@ -61,7 +60,6 @@ export function eliminateSudoku(board: boardType): boardType | null {
   };
 
   // Returns the solved board if it can be solved. Otherwise return null
-  // TODO if null is returned to the other files make it handle it with an error or something.
   if (solve()) {
     return solvedBoard;
   } else {
