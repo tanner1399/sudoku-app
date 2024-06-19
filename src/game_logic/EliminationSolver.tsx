@@ -1,4 +1,4 @@
-import { getBoardSize } from "../mvc/model/sudoku_generator";
+import { getBoardSize } from "../MVC/model/sudoku_generator";
 
 // Temp values:
 type boardType = number[][];
