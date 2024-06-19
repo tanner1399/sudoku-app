@@ -1,0 +1,177 @@
+.center-board {
+  text-align: center;
+}
+
+body {
+  background: bisque;
+}
+
+.board-container {
+  padding-bottom: 10vh;
+  position: relative;
+}
+
+.Board-header {
+  background-color: bisque;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(1vh + 2vmin); 
+  color: rgba(0, 0, 0, 0.75);
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.cellInput {
+  width: 3vw; 
+  height: 3vw; 
+  font-size: 2vh; 
+  text-align: center;
+  border: 0.1vh solid black;
+  position: relative;
+}
+
+.board-row {
+  display: flex;
+}
+
+table {
+  border-collapse: collapse;
+  border: 0.3vh solid;
+  color: black;
+  margin: auto;
+}
+
+td {
+  padding: 0;
+}
+
+.mistakeCounter {
+  position: relative;
+  padding-bottom: 1vh;
+  padding-top: 1vh;
+  font-size: 2vh;
+}
+
+.buttonContainer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1vh;
+}
+
+.incorrect {
+  color: red;
+}
+
+.correct {
+  color: black;
+}
+
+.finishedBox {
+  padding: 15vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: bisque;
+  border-radius: 0.5vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-size: 3vh; 
+}
+
+.newGame,
+.resetGame,
+.menu,
+.hint {
+  background-color: rgb(198, 176, 150);
+  font-weight: bold;
+  padding: 1.2vh 2vh;
+  border: none;
+  border-radius: 1vh;
+  font-size: medium;
+  margin: 0.3vh;
+}
+
+.newGame:hover,
+.resetGame:hover,
+.menu:hover {
+  background-color: rgb(144, 127, 108);
+}
+
+.solveButton {
+  background-color: aquamarine;
+  font-weight: bold;
+  padding: 2vh 3vh; 
+  border: none;
+  border-radius: 10px;
+  font-size: medium;
+  background-color: rgb(47, 194, 61);
+  margin-right: 2vw; 
+  margin-bottom: 2vh;
+}
+
+.solveButton:hover {
+  background-color: rgb(40, 165, 52);
+}
+
+.bBorder {
+  border-bottom: 2px solid black;
+}
+
+.rBorder {
+  border-right: 2px solid black;
+}
+
+.blur-container {
+  background: inherit;
+  border-color: rgba(0, 0, 0, 0.901);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.268);
+  width: 80%;
+  height: 70vh;
+  margin: 1vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  margin-bottom: 100px;
+  position: relative;
+  top: 15%;
+  margin-top: 40px;
+}
+
+.pause-text {
+  font-size: 5vh;
+}
+
+.timer {
+  top: 0;
+  right: 0;
+  left: 0;
+  font-size: 2vh;
+}
+
+.pause-button {
+  top: 5%;
+  position: relative;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  background-color: rgb(198, 176, 150);
+  background: rgb(198, 176, 150);
+  border-color: rgb(198, 176, 150);
+  border-width: 1px;
+  border-radius: 5px;
+}
+
+.pause-button:hover {
+  background-color: rgb(144, 127, 108);
+}
+
+.timer {
+  position: relative;
+  padding-top: 2vh;
+}
