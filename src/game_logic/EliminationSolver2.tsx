@@ -1,9 +1,3 @@
-/* 
-TODOS:
-Upgrade the EliminationSolver by: 
-- Change -1 to emptyCell
-*/
-
 import { getBoardSize } from "../MVC/model/sudoku_generator";
 
 // Temp values:
@@ -24,24 +18,24 @@ export function eliminateSudoku(board: boardType): boardType | null {
   const boxSize = Math.sqrt(boardSize);
   const emptyCell = -1;
 
-  // Make a copy of the board (Found online. Reformat later when input is proberly formatted.)
+  // Create a deep copy of the board
   const solvedBoard = JSON.parse(JSON.stringify(board));
 
   // variables used for filling in single missing cells
   let arrMissing = new Array(boardSize);
   let numOfMissing = 0;
-  let missingIndex = -1; // Place of the missing number
+  let missingIndex = emptyCell; // Place of the missing number
   const allNumbers = Array.from({ length: boardSize }, (_, i) => i + 1);
 
   // Check col for single missing
   for (let i = 0; i < boardSize; i++) {
-    missingIndex = -1;
+    missingIndex = emptyCell;
     numOfMissing = 0;
 
     for (let j = 0; j < boardSize; j++) {
       arrMissing[j] = solvedBoard[i][j];
 
-      if (solvedBoard[i][j] == -1) {
+      if (solvedBoard[i][j] == emptyCell) {
         missingIndex = j;
         numOfMissing++;
 
@@ -50,7 +44,7 @@ export function eliminateSudoku(board: boardType): boardType | null {
         }
       }
     }
-    if (numOfMissing == 1 && missingIndex != -1) {
+    if (numOfMissing == 1 && missingIndex != emptyCell) {
       let colMissingNumber = findMissingNum(arrMissing, allNumbers);
       solvedBoard[i][missingIndex] = colMissingNumber;
     }
@@ -58,13 +52,13 @@ export function eliminateSudoku(board: boardType): boardType | null {
 
   // Check row for single missing
   for (let i = 0; i < boardSize; i++) {
-    missingIndex = -1;
+    missingIndex = emptyCell;
     numOfMissing = 0;
 
     for (let j = 0; j < boardSize; j++) {
       arrMissing[j] = solvedBoard[j][i];
 
-      if (solvedBoard[j][i] == -1) {
+      if (solvedBoard[j][i] == emptyCell) {
         missingIndex = j;
         numOfMissing++;
 
@@ -73,7 +67,7 @@ export function eliminateSudoku(board: boardType): boardType | null {
         }
       }
     }
-    if (numOfMissing == 1 && missingIndex != -1) {
+    if (numOfMissing == 1 && missingIndex != emptyCell) {
       let rowMissingNumber = findMissingNum(arrMissing, allNumbers);
       solvedBoard[missingIndex][i] = rowMissingNumber;
     }
@@ -87,8 +81,7 @@ export function eliminateSudoku(board: boardType): boardType | null {
       }
     }
 
-    // Checks the same in the 3*3 box
-    // TODO: Reformat to fit different sizes
+    // Checks the same in the boxes
     const startRow = Math.floor(row / boxSize) * boxSize;
     const startCol = Math.floor(col / boxSize) * boxSize;
     for (let i = 0; i < boxSize; i++) {
@@ -102,11 +95,11 @@ export function eliminateSudoku(board: boardType): boardType | null {
     return true;
   };
 
-  // TODO: Make this less nested ~_~
   const solve = () => {
     for (let row = 0; row < boardSize; row++) {
       for (let col = 0; col < boardSize; col++) {
-        if (solvedBoard[row][col] === emptyCell) {
+
+        if (solvedBoard[row][col] === emptyCell) { // Tries numbers from 1 to boardSize and checks if they can be placed
           for (let num = 1; num <= boardSize; num++) {
             if (isValidPlacement(row, col, num)) {
               solvedBoard[row][col] = num;
@@ -129,7 +122,6 @@ export function eliminateSudoku(board: boardType): boardType | null {
   };
 
   // Returns the solved board if it can be solved. Otherwise return null
-  // TODO if null is returned to the other files make it handle it with an error or something.
   if (solve()) {
     return solvedBoard;
   } else {

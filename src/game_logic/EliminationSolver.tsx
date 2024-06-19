@@ -1,6 +1,5 @@
 import { getBoardSize } from "../MVC/model/sudoku_generator";
 
-// Temp values:
 type boardType = number[][];
 
 export function eliminateSudoku(board: boardType): boardType | null {
