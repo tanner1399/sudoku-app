@@ -36,7 +36,24 @@ export const useSudokuModel = () => {
 
   // Const to sovle the Sudoku
   const solveSudoku = () => {
+
+    const generationTimes = [];
+    const startTime = performance.now(); 
+
+    
     const solvedElimBoard = eliminateSudoku(createdBoard);
+
+    const endtime = performance.now();
+
+    generationTimes.push({
+      boardSize: getBoardSize(),
+      time: endtime - startTime,
+    });
+  
+    generationTimes.forEach((entry) => {
+      console.log(`${entry.boardSize}\t${entry.time}`);
+    });
+  
     if (solvedElimBoard !== null) {
       setCreatedBoard(solvedElimBoard);
     } else {
