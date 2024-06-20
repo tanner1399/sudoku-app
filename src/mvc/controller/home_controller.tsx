@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MenuView from "../view/home_view";
-import {
-  validateUsername,
-  saveBoardSize,
-  saveDifficulty,
-} from "../model/home_model";
+import { saveBoardSize, saveDifficulty } from "../model/home_model";
 import "../view/home.css";
 
 const MenuController: React.FC = () => {
@@ -14,9 +10,6 @@ const MenuController: React.FC = () => {
   }, []);
 
   const navigate = useNavigate();
-  const [username, setUsername] = useState<string>("");
-  const [showModal, setShowModal] = useState<boolean>(true);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [boardSize, setBoardSize] = useState<string>("");
   const [difficulty, setActiveDifficulty] = useState<string>("");
 
@@ -27,13 +20,6 @@ const MenuController: React.FC = () => {
       navigate("/Game");
     } else {
       alert("Please select a valid board size before starting the game");
-    }
-  };
-
-  const handleLogin = () => {
-    if (validateUsername(username)) {
-      setShowModal(false);
-      setIsLoggedIn(true);
     }
   };
 
@@ -58,14 +44,9 @@ const MenuController: React.FC = () => {
 
   return (
     <MenuView
-      username={username}
-      setUsername={setUsername}
-      showModal={showModal}
-      isLoggedIn={isLoggedIn}
       boardSize={boardSize}
       setBoardSize={setBoardSize}
       difficulty={difficulty}
-      handleLogin={handleLogin}
       handleEasyClick={handleEasyClick}
       handleMedClick={handleMedClick}
       handleHardClick={handleHardClick}

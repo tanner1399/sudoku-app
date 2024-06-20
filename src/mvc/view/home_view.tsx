@@ -1,14 +1,9 @@
 import React from "react";
 
 interface MenuViewProps {
-  username: string;
-  setUsername: React.Dispatch<React.SetStateAction<string>>;
-  showModal: boolean;
-  isLoggedIn: boolean;
   boardSize: string;
   setBoardSize: React.Dispatch<React.SetStateAction<string>>;
   difficulty: string;
-  handleLogin: () => void;
   handleEasyClick: () => void;
   handleMedClick: () => void;
   handleHardClick: () => void;
@@ -17,14 +12,9 @@ interface MenuViewProps {
 }
 
 const MenuView: React.FC<MenuViewProps> = ({
-  username,
-  setUsername,
-  showModal,
-  isLoggedIn,
   boardSize,
   setBoardSize,
   difficulty,
-  handleLogin,
   handleEasyClick,
   handleMedClick,
   handleHardClick,
@@ -33,39 +23,23 @@ const MenuView: React.FC<MenuViewProps> = ({
 }) => (
   <div className="menu-container">
     <header className="Title">Sudoku</header>
-    {showModal && (
-      <div className="modal">
-        <input
-          type="text"
-          placeholder="Enter your username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <button onClick={handleLogin}>Login</button>
-      </div>
-    )}
-    {isLoggedIn && (
-      <div className="greeting">
-        <p>
-          Hi {username}!<br />
-          Please select a board size & difficulty
-        </p>
-        <form>
-          <select
-            className="sizeSelector"
-            value={boardSize}
-            onChange={(e) => setBoardSize(e.target.value)}
-          >
-            <option value="" disabled>
-              Select board size
-            </option>
-            <option value={4}> 4 </option>
-            <option value={9}> 9</option>
-            <option value={16}> 16</option>
-          </select>
-        </form>
-      </div>
-    )}
+    <div className="greeting">
+      <p>Please select a board size & difficulty</p>
+      <form>
+        <select
+          className="sizeSelector"
+          value={boardSize}
+          onChange={(e) => setBoardSize(e.target.value)}
+        >
+          <option value="" disabled>
+            Select board size
+          </option>
+          <option value={4}> 4 </option>
+          <option value={9}> 9</option>
+          <option value={16}> 16</option>
+        </select>
+      </form>
+    </div>
     <div className="buttons-container">
       <div className="difficulty-buttons">
         <button
