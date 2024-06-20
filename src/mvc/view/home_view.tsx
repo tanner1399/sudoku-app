@@ -62,7 +62,6 @@ const MenuView: React.FC<MenuViewProps> = ({
             <option value={4}> 4 </option>
             <option value={9}> 9</option>
             <option value={16}> 16</option>
-            <option value={25}> 25</option>
           </select>
         </form>
       </div>
