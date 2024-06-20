@@ -30,6 +30,13 @@ const BoardController: React.FC = () => {
 
   const navigate = useNavigate();
 
+  // Function to check if the game is finished
+  const checkIfGameIsFinished = () => {
+    return createdBoard.every((row, rowIndex) =>
+      row.every((col, colIndex) => col === originalBoard[rowIndex][colIndex])
+    );
+  };
+
   // Function to handle the user input in the cell
   const handleCellChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -40,9 +47,14 @@ const BoardController: React.FC = () => {
     const newBoard = [...createdBoard];
     newBoard[row][col] = inputValue;
     setCreatedBoard(newBoard);
+
+    // Check if the game is finished after the change
+    if (checkIfGameIsFinished()) {
+      setIsFinished(true);
+    }
   };
 
-  // Function to handle and check the user input after the cell has ben exited
+  // Function to handle and check the user input after the cell has been exited
   const handleCellBlur = (
     event: React.FocusEvent<HTMLInputElement>,
     row: number,
@@ -51,20 +63,19 @@ const BoardController: React.FC = () => {
     const inputs = event.target;
     const inputValue = parseInt(inputs.value, 10) || -1;
 
-    const isBoardFinished = createdBoard.every((row, rowIndex) =>
-      row.every((col, colIndex) => col === originalBoard[rowIndex][colIndex])
-    );
+    if (inputValue === originalBoard[row][col] || inputValue === -1) {
+      inputs.classList.remove("incorrect");
+      inputs.classList.add("correct");
+    } else {
+      inputs.classList.remove("correct");
+      inputs.classList.add("incorrect");
+      setLifeCounter((prevLifeCounter) => prevLifeCounter - 1);
+      checkLifeCounter();
+    }
 
-    if (!isBoardFinished) {
-      if (inputValue === originalBoard[row][col] || inputValue === -1) {
-        inputs.classList.remove("incorrect");
-        inputs.classList.add("correct");
-      } else {
-        inputs.classList.remove("correct");
-        inputs.classList.add("incorrect");
-        setLifeCounter((prevLifeCounter) => prevLifeCounter - 1);
-        checkLifeCounter();
-      }
+    // Check if the game is finished after the blur
+    if (checkIfGameIsFinished()) {
+      setIsFinished(true);
     }
   };
 

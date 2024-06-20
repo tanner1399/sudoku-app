@@ -96,7 +96,7 @@ const SudokuBoardView: React.FC<SudokuViewProps> = ({
                           : ""
                       }
                     >
-                      <input // Handles input in the cell and disables the cell if the correct number has been inputted
+                      <input
                         onChange={(e) =>
                           handleCellChange(e, rowIndex, colIndex)
                         }
@@ -111,8 +111,6 @@ const SudokuBoardView: React.FC<SudokuViewProps> = ({
                         disabled={
                           createdBoard[rowIndex][colIndex] ===
                           originalBoard[rowIndex][colIndex]
-                            ? true
-                            : false
                         }
                       />
                     </td>
