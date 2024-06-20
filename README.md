@@ -1,3 +1,10 @@
+# Run program
+- Install Node.js (check with node --version) (https://www.youtube.com/watch?v=4FAtFwKVhn0)
+- Kill terminal (+ restart code editing program if opend) -> Be in the "sudoku-app" folder and:  
+- npm install
+- install test
+- npm run dev -> open local host
+
 # Sudoku Generation
 
 Might be worth to look into this: [Minimum numbers given for a sudoku](https://en.wikipedia.org/wiki/Mathematics_of_Sudoku#Minimum_number_of_givens)
