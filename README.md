@@ -15,5 +15,5 @@
    - Install React testing library:
      `npm install --save-dev @testing-library/jest-dom @testing-library/react @testing-library/user-event`
    - Run: `npm run test`
-     - Note that some test will fail. Please see the rapport section **Test/Unit test** for details for this.
+     - Note that some test will fail. Please see the report section **Test/Unit test** for details for this.
 
