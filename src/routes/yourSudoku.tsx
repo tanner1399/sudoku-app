@@ -9,7 +9,7 @@ function YourSudoku() {
   const [isLocked, setIsLocked] = useState(false);
   const navigate = useNavigate();
 
-  function handleBoardSizeChange(event) {
+  function handleBoardSizeChange(event: React.ChangeEvent<HTMLSelectElement>) {
     setYourBoardSize(parseInt(event.target.value));
   }
 
@@ -21,8 +21,8 @@ function YourSudoku() {
     setIsLocked(false); // Unlock the board if creating a new one
   }
 
-  function handleCellChange(rowIndex, cellIndex, event) {
-    let newValue = event.target.value;
+  function handleCellChange(rowIndex: number, cellIndex: number, event: React.ChangeEvent<HTMLInputElement>) {
+    let newValue: number | string = event.target.value;
     if (newValue === '') {
       newValue = -1; // if the input is cleared, set the value to -1
     } else {
