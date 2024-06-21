@@ -1,8 +1,3 @@
-import { getBoardSize } from "../mvc/model/sudoku_generator";
-
-// Temp values:
-type boardType = number[][];
-
 // Given an array of numbers (the numbers in a col, row or box) find what numbers are missing from that element.
 // If there is only one missing number -> return that missing number
 function findMissingNum(foundNums: Number[], allNumbers: Number[]) {
@@ -13,7 +8,12 @@ function findMissingNum(foundNums: Number[], allNumbers: Number[]) {
   }
 }
 
-export function eliminateSudoku(board: boardType): boardType | null {
+export function eliminateSudoku(board: number[][]): number[][] | null {
+
+  function getBoardSize(){
+    return board.length
+  }
+
   const boardSize = getBoardSize();
   const boxSize = Math.sqrt(boardSize);
   const emptyCell = -1;

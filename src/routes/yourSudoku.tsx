@@ -4,8 +4,8 @@ import { eliminateSudoku } from "../game_logic/EliminationSolver2";
 
 function YourSudoku() {
   const [yourBoardSize, setYourBoardSize] = useState(0);
-  const [board, setBoard] = useState([]);
-  const [yourBoard, setYourBoard] = useState([]);
+  const [board, setBoard] = useState<number[][]>([]);
+  const [yourBoard, setYourBoard] = useState<number[][]>([]);
   const [isLocked, setIsLocked] = useState(false);
   const navigate = useNavigate();
 
@@ -44,9 +44,11 @@ function YourSudoku() {
     setIsLocked(true);
   }
 
-  function solveSudoku() {
+  function solveSudoku () {
     const solvedBoard = eliminateSudoku(yourBoard);
-    setBoard(solvedBoard);
+    if (solvedBoard !== null) {
+      setBoard(solvedBoard);
+    };
   }
 
   const navigateHome = () => {
@@ -57,9 +59,9 @@ function YourSudoku() {
     <div>
       <header>Build your own Sudoku</header>
       <div>
-        <label htmlFor="boardSize">Select board size: </label>
+        <label htmlFor="yourboardSize">Select board size: </label>
         <select
-          id="boardSize"
+          id="yourboardSize"
           value={yourBoardSize}
           onChange={handleBoardSizeChange}
           disabled={isLocked} // Disable size selection if the board is locked
