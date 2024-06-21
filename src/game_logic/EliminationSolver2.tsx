@@ -9,14 +9,13 @@ function findMissingNum(foundNums: Number[], allNumbers: Number[]) {
 }
 
 export function eliminateSudoku(board: number[][]): number[][] | null {
+  const boardSize = getBoardSize();
+  const boxSize = Math.sqrt(boardSize);
+  const emptyCell = -1;
 
   function getBoardSize(){
     return board.length
   }
-
-  const boardSize = getBoardSize();
-  const boxSize = Math.sqrt(boardSize);
-  const emptyCell = -1;
 
   // Create a deep copy of the board
   const solvedBoard = JSON.parse(JSON.stringify(board));

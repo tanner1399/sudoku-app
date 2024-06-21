@@ -1,11 +1,13 @@
-import { getBoardSize } from "../mvc/model/sudoku_generator";
-
 type boardType = number[][];
 
 export function eliminateSudoku(board: boardType): boardType | null {
   const boardSize = getBoardSize();
   const boxSize = Math.sqrt(boardSize);
   const emptyCell = -1;
+
+  function getBoardSize(){
+    return board.length
+  }
 
   // Create a deep copy of the board
   const solvedBoard = JSON.parse(JSON.stringify(board));
