@@ -6,7 +6,7 @@
    - If nothing shows you can download it from [here](https://nodejs.org/en/download/prebuilt-installer). Please make sure to download the a long term support version (**LTS**)
      - Or follow this [youtube guide](https://www.youtube.com/watch?v=4FAtFwKVhn0)
    - After installation make sure to kill all open terminals
-2. Open the "sudoku-app" folder downloaded from [GitHub **MANGLER**]()
+2. **Open the "sudoku-app" folder downloaded from [GitHub](https://github.com/tanner1399/sudoku-app)**
    - Run `npm install`
    - Followed by `npm run dev`
    - Open the **localhost** in your webbrowser
@@ -15,4 +15,5 @@
    - Install React testing library:
      `npm install --save-dev @testing-library/jest-dom @testing-library/react @testing-library/user-event`
    - Run: `npm run test`
-     - **MANGLER:** folder to change constants
+     - Note that some test will fail. Please see the rapport section **Test/Unit test** for details for this.
+
